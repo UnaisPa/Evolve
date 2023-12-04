@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description">
+
+    <!-- title -->
+    <title>Evolve</title>
+
+    <!-- favicon -->
+    {{!--
+    <link rel="shortcut icon" type="image/png" href="stylesheet/assets/img/favicon.png"> --}}
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+
+    <link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+    {{!-- sweet alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+</head>
+
+<body>
+
+    <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
+    <!-- header -->
+    <div class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">
+                        <!-- logo -->
+                        <div class="site-logo">
+                            <a href="/home">
+                                <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                                {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                            </a>
+                        </div>
+                        <!-- logo -->
+
+                        <!-- menu start -->
+                        <nav class="main-menu">
+                            <ul>
+                                <li class="current-list-item"><a href="/home">Home</a></li>
+                                <li><a href="/shop">Shop</a></li>
+                                {{#if verified}}<li><a href="/profile">Profile</a></li>
+                                {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/wishlist">Wishlist</a></li>
+                                {{!-- <li><a href="shop.html">Shop</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                        <li><a href="single-product.html">Single Product</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                    </ul>
+                                </li> --}}
+
+                                <li>
+                                    <div class="header-icons">
+                                        <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                        {{!-- <a class="mobile-hide search-bar-icon" href="#"><i
+                                                class="fas fa-search"></i></a> --}}
+                                        <a>
+                                            <form action="/shop" method="get" style="margin-right:2%;">
+                                                <div style="" class="input-group">
+                                                    <input id="searchBar" name="search"
+                                                        style="width: 130px;height: 40px;" class="form-control"
+                                                        aria-describedby="button-addon2" placeholder="Search" {{#if
+                                                        search}} value="{{search}}" {{/if}}>
+                                                    <button
+                                                        style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                        class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                            style="font-size: 20px;" class='bx bx-search'></i></button>
+                                                </div>
+                                            </form>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="mobile-menu mean-container"></div>
+
+                    </div>
+
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- end header -->
+
+    <!-- search area -->
+    <div class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                    <div class="search-bar">
+                        <div class="search-bar-tablecell">
+                            <h3>Search For:</h3>
+                            <form action="shop?search={{search}}" method="get">
+                                <input {{#if search}} name="search" value="{{search}}" {{/if}} type="search"
+                                    placeholder="Keywords">
+                                <button type="submit">Search <i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search area -->
+
+    <!-- hero area -->
+    <div class="hero-area hero-bg" style="background-image: url(/bannerImages/{{#each banner}}{{this.image}}{{/each}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 offset-lg-2 text-center">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">{{#each banner}}{{this.text}}{{/each}}</p>
+                            <h1>{{#each banner}}{{this.heading}}{{/each}}</h1>
+                            <div class="hero-btns">
+                                <a href="/shop" class="boxed-btn">Explore Now</a>
+                                <a href="/contact" class="bordered-btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end hero area -->
+
+    <!-- features list section -->
+    <div class="list-section pt-80 pb-80">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="list-box d-flex align-items-center">
+                        <div class="list-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <div class="content">
+                            <h3>Free Shipping</h3>
+                            <p>When order over $75</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="list-box d-flex align-items-center">
+                        <div class="list-icon">
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                        <div class="content">
+                            <h3>24/7 Support</h3>
+                            <p>Get support all day</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="list-box d-flex justify-content-start align-items-center">
+                        <div class="list-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <div class="content">
+                            <h3>Refund</h3>
+                            <p>Get refund within 3 days!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end features list section -->
+
+    <!-- product section -->
+    <div class="product-section mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="section-title">
+                        <h3><span class="orange-text">Our</span> Products</h3>
+                        <p>Explore Our latest collections</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {{#each getAllProducts}}
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="single-product-item">
+                        {{#if this.badge}}<div class="badge">{{badge}}</div>{{/if}}
+                        {{#if this.image}}
+                        <div class="product-image">
+                            <a href="/product_details/{{this._id}}"><img src="/productimages/{{this.image.[0]}}"
+                                    alt=""></a>
+                        </div>
+                        {{/if}}
+                        <h3>{{this.name}}</h3>
+                        <p class="product-price"><span>category : {{this.category}}</span><i
+                                class="bi bi-currency-rupee"></i> {{this.offerprice}} </p>
+                        <div class="d-flex px-4 justify-content-center" style="margin-left: auto;margin-right: auto;">
+                            <a class="cart-btn add-to-cart-btn" data-product-id="{{this._id}}"><i
+                                    class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <a class="pt-2 add-to-wishlist-btn" data-product-id="{{this._id}}"
+                                style="width: 40px;margin-left: 15px;padding: 3px;border-radius: 50%;"><i
+                                    style="font-size: 20px;color:rgb(255, 123, 0)" class="bi bi-heart-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <!-- end product section -->
+
+    <!-- Deal of Month section -->
+    <section class="cart-banner pt-100 pb-100">
+        <div class="container">
+            <div class="row clearfix">
+                <!--Image Column-->
+                <div class="image-column col-lg-6">
+                    <div class="image">
+                        <div class="price-box">
+                            <div class="inner-price">
+                                <span class="price">
+                                    <strong>{{#each dealOfMonth}}{{this.offer}}{{/each}}%</strong> <br> off
+                                </span>
+                            </div>
+                        </div>
+                        <img src="/productimages/{{#each dealOfMonth}}{{this.image}}{{/each}}" alt="">
+                    </div>
+                </div>
+                <!--Content Column-->
+                <div class="content-column col-lg-6">
+                    <h3><span class="orange-text">Deal</span> of the month</h3>
+                    <h4>{{#each dealOfMonth}}{{this.productName}}{{/each}}</h4>
+                    <div class="text">{{#each dealOfMonth}}{{this.description}}{{/each}}</div>
+                    <!--Countdown Timer-->
+                    {{!-- <div class="time-counter">
+                        <div class="time-countdown clearfix" data-countdown="2020/2/01">
+                            <div class="counter-column">
+                                <div class="inner"><span class="count">00</span>Days</div>
+                            </div>
+                            <div class="counter-column">
+                                <div class="inner"><span class="count">00</span>Hours</div>
+                            </div>
+                            <div class="counter-column">
+                                <div class="inner"><span class="count">00</span>Mins</div>
+                            </div>
+                            <div class="counter-column">
+                                <div class="inner"><span class="count">00</span>Secs</div>
+                            </div>
+                        </div>
+                    </div> --}}
+                    <a href="/shop" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i>Explore Shop</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end cart banner section -->
+
+
+
+
+
+    <!-- shop banner -->
+    <section class="shop-banner">
+        <div class="container">
+            <h3><span id="month"></span> sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
+            <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
+            <a href="/shop" class="cart-btn btn-lg">Shop Now</a>
+        </div>
+    </section>
+    <!-- end shop banner -->
+
+
+
+    {{!-- <!-- logo carousel -->
+    <div class="logo-carousel-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo-carousel-inner">
+                        <div class="single-logo-item">
+                            <img src="stylesheet/assets/img/company-logos/1.png" alt="">
+                        </div>
+                        <div class="single-logo-item">
+                            <img src="stylesheet/assets/img/company-logos/2.png" alt="">
+                        </div>
+                        <div class="single-logo-item">
+                            <img src="stylesheet/assets/img/company-logos/3.png" alt="">
+                        </div>
+                        <div class="single-logo-item">
+                            <img src="stylesheet/assets/img/company-logos/4.png" alt="">
+                        </div>
+                        <div class="single-logo-item">
+                            <img src="stylesheet/assets/img/company-logos/5.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end logo carousel --> --}}
+
+    <!-- footer -->
+    <div class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box about-widget">
+                        <h2 class="widget-title">About us</h2>
+                        <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style
+                            and innovation for a sophisticated living experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box get-in-touch">
+                        <h2 class="widget-title">Get in Touch</h2>
+                        <ul>
+                            <li> GK Building , Bangalore 432</li>
+                            <li>support@evolve.com</li>
+                            <li>+91 667 8822 0909</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box pages">
+                        <h2 class="widget-title">Explore</h2>
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box subscribe">
+                        <h2 class="widget-title">Subscribe</h2>
+                        <p>Subscribe to our mailing list to get the latest updates.</p>
+                        <form action="">
+                            <input type="email" placeholder="Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+
+    <!-- copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                        Reserved.</p>
+                </div>
+                <div class="col-lg-6 text-right col-md-12">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end copyright -->
+
+    <!-- jquery -->
+    <script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- count down -->
+    <script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+    <!-- isotope -->
+    <script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+    <!-- waypoints -->
+    <script src="/stylesheet/assets/js/waypoints.js"></script>
+    <!-- owl carousel -->
+    <script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+    <!-- magnific popup -->
+    <script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- mean menu -->
+    <script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+    <!-- sticker js -->
+    <script src="/stylesheet/assets/js/sticker.js"></script>
+    <!-- main js -->
+    <script src="/stylesheet/assets/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script lang="javaScript">
+
+        //add to cart
+
+        $(document).ready(function () {
+            $(".add-to-cart-btn").click(function () {
+
+                const productId = $(this).data("product-id");
+                $.ajax({
+                    type: "POST",
+                    url: "/add-to-cart", // Your server route for adding items to the cart
+                    data: { productId: productId },
+                    success: function (data) {
+                        //$('#response-content').text(data);
+                        if (data.status == 'warning') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Login Required',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                        else if (data == "outOfStock") {
+                            Swal.fire({
+                                icon: 'error',
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Item Added to Cart',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+
+        //add to wishlist
+
+        $(document).ready(function () {
+            $(".add-to-wishlist-btn").click(function () {
+
+                const productId = $(this).data("product-id");
+
+                $.ajax({
+                    type: "POST",
+                    url: "/add-to-wishlist", // Your server route for adding items to the wishlist
+                    data: { productId: productId },
+                    success: function (data) {
+                        if (data.status == 'fail') {
+                            Toastify({
+                                text: data.message,
+                                duration: 5000, // Display the toast for 5 seconds
+                                gravity: "top", // Position the toast at the top
+                                position: "right", // Position the toast on the right side
+                                backgroundColor: "red", // Customize the toast background color
+                            }).showToast();
+                        } else if (data.status == 'error') {
+                            Toastify({
+                                text: data.message,
+                                duration: 5000, // Display the toast for 5 seconds
+                                gravity: "top", // Position the toast at the top
+                                position: "right", // Position the toast on the right side
+                                backgroundColor: "red", // Customize the toast background color
+                            }).showToast();
+                        } else if (data.status == 'success') {
+                            Toastify({
+                                text: "Product Added to Wishlist",
+                                duration: 5000, // Display the toast for 5 seconds
+                                gravity: "top", // Position the toast at the top
+                                position: "right", // Position the toast on the right side
+                                backgroundColor: "green", // Customize the toast background color
+                            }).showToast();
+                        }
+
+                    },
+                    error: function (error) {
+                        Toastify({
+                            text: error.message,
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "red", // Customize the toast background color
+                        }).showToast();
+                        console.error(error);
+                    }
+                });
+            });
+        });
+
+        var currentDate = new Date();
+        const month = document.getElementById('month');
+        // Get the current month name using toLocaleDateString with options
+        var currentMonthName = currentDate.toLocaleDateString('en-US', { month: 'long' });
+        month.textContent=currentMonthName
+    </script>
+</body>
+
+</html>

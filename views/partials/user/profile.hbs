@@ -1,0 +1,928 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="/stylesheet/profile.css">
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+
+ <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
+    <!-- header -->
+    <div class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">
+                        <!-- logo -->
+                        <div class="site-logo">
+                            <a href="/home">
+                                <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                                {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                            </a>
+                        </div>
+                        <!-- logo -->
+
+                        <!-- menu start -->
+                        <nav class="main-menu">
+                            <ul>
+                                <li ><a href="/home">Home</a></li>
+                                <li ><a href="/shop">Shop</a></li>
+                                {{#if verified}}<li class="current-list-item"><a href="/profile">Profile</a></li>
+                                {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/wishlist">Wishlist</a></li>
+                                {{!-- <li><a href="shop.html">Shop</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                        <li><a href="single-product.html">Single Product</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                    </ul>
+                                </li> --}}
+
+                                <li>
+                                    <div class="header-icons">
+                                        <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                        <a>
+                                            <form action="/shop" method="get" style="margin-right:2%;">
+                                                <div style="" class="input-group">
+                                                    <input id="searchBar" name="search"
+                                                        style="width: 130px;height: 40px;" class="form-control"
+                                                        aria-describedby="button-addon2" placeholder="Search" {{#if
+                                                        search}} value="{{search}}" {{/if}}>
+                                                    <button
+                                                        style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                        class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                            style="font-size: 20px;" class='bx bx-search'></i></button>
+                                                </div>
+                                            </form>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="mobile-menu"></div>
+                        <!-- menu end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <!-- search area -->
+    <div class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                    <div class="search-bar">
+                        <div class="search-bar-tablecell">
+                            <h3>Search For:</h3>
+                            <input type="text" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search area -->
+<div style="height: 100px;background-color: #141211;">
+
+</div>
+
+{{#if maximumLimit}}
+
+<div class="modal fade" id="statusWishlistRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle"></i>
+                <h5 class="text mt-3" style="color: rgb(150, 121, 83);">Oops! It seems you've reached the maximum limit
+                    for adding addresses to your account.</h5>
+
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistRemoveModal" id="successWishlistRemoveButton">Success Modal</button>
+
+{{/if}}
+{{!-- address remove moedel --}}
+<div class="modal fade" id="statusWishlistRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle"></i>
+                <h4 class="text mt-3" style="color: rgb(150, 121, 83);">Are you sure you want to delete this address?
+                </h4>
+
+                <button type="button" class="btn btn-sm mt-3 btn-outline-success deleteConfirm"
+                    data-bs-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-sm mt-3 btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistRemoveModal">Success Modal</button>
+{{!-- model end --}}
+{{#if added}}
+{{!-- Succes model for added address --}}
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3"></p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusSuccessModal" id="successModalButton">Success Modal</button>
+{{!-- success model end --}}
+
+
+{{!-- address alreadyExist moedel --}}
+<div class="modal fade" id="statusCartRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle-fill"></i>
+                <h6 class="text mt-3" style="color: rgb(150, 121, 83);">Oops, it looks like this address is already in
+                    our records. Please provide a different address to add.</h6>
+
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusCartRemoveModal" id="successCartRemoveButton">Success Modal</button>
+{{!-- cart remove model end --}}
+{{!-- wishlist moedel --}}
+<div class="modal fade" id="statusWishlistModalss" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm " role="document">
+        <div class="d-flex justify-content-end">
+            <div style="width: 70px;">
+
+            </div>
+            <div class="spinner-border text-light m-5" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        {{!-- <div class="modal-content">
+            <div class="text-center p-lg-4">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistModalss" id="successWishlistButtonFor">Success Modal</button>
+
+
+<div class="modal fade" id="statusWishlistModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3">Address deleted Successfully</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success deletedSuccessfully"
+                    data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistModal" id="successWishlistButton">Success Modal</button>
+{{!-- model end --}}
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: #452212;">Add Address</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="user-box mx-2">
+                    <input type="text" name="name" id="name" required="">
+                    <label>Name</label>
+                    <label class="d-flex justify-content-end" id="nameError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class="user-box mx-2">
+                    <input type="text" name="mobile" id="mobile" required="">
+                    <label>Mobile Number</label>
+                    <label class="d-flex justify-content-end" id="mobileError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class="d-flex">
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="city" id="city" required="">
+                        <label>City</label>
+
+                        <label class="d-flex justify-content-end" id="cityError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="state" id="state" required="">
+                        <label>State</label>
+                        <label class="d-flex justify-content-end" id="stateError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="pincode" id="pincode" required="">
+                        <label>Pincode</label>
+                        <label class="d-flex justify-content-end" id="pinError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="district" id="district" required="">
+                        <label>District</label>
+                        <label class="d-flex justify-content-end" id="districtError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                </div>
+                <div class="user-box mx-2">
+                    <input type="text" name="address" id="address" required="">
+                    <label>Address</label>
+                    <label class="d-flex justify-content-end" id="addressError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Discard</button>
+                <button id="addressSubmit" onclick="validate()" class="btn btn-outline-dark">Save Address</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Edit addresss-1-->
+<div class="modal fade" id="staticBackdrops" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabels" style="color: #452212;">Edit Address</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <input type="hidden" value="{{#each userAddress}}{{this._id}}{{/each}}" id="addressId">
+            <div class="modal-body">
+
+                <div class="user-box mx-2">
+                    <input type="text" name="name" id="EditName" required=""
+                        value="{{#each userAddress}}{{this.name}}{{/each}}">
+                    <label>Name</label>
+                    <label class="d-flex justify-content-end" id="EnameError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class="user-box mx-2">
+                    <input type="text" name="mobile" id="EditMobile" required=""
+                        value="{{#each userAddress}}{{this.mobile}}{{/each}}">
+                    <label>Mobile Number</label>
+                    <label class="d-flex justify-content-end" id="EmobileError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class="d-flex">
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" id="EditCity" name="city" required=""
+                            value="{{#each userAddress}}{{this.city}}{{/each}}">
+                        <label>City</label>
+
+                        <label class="d-flex justify-content-end" id="EcityError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="state" id="EditState" required=""
+                            value="{{#each userAddress}}{{this.state}}{{/each}}">
+                        <label>State</label>
+                        <label class="d-flex justify-content-end" id="EstateError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" id="EditPincode" name="pincode" required=""
+                            value="{{#each userAddress}}{{this.pincode}}{{/each}}">
+                        <label>Pincode</label>
+                        <label class="d-flex justify-content-end" id="EpinError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" id="EditDistrict" name="district" required=""
+                            value="{{#each userAddress}}{{this.district}}{{/each}}">
+                        <label>District</label>
+                        <label class="d-flex justify-content-end" id="EdistrictError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                </div>
+                <div class="user-box mx-2">
+                    <input type="text" name="address" id="EditAddress" required=""
+                        value="{{#each userAddress}}{{this.address}}{{/each}}">
+                    <label>Address</label>
+                    <label class="d-flex justify-content-end" id="EaddressError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Discard</button>
+                <button type="submit" id="editAddressBtn" class="btn btn-outline-dark">Update Address</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<section>
+
+    <div class="container">
+        <div class=" m-3" style="height: 400px;">
+            <div class="m-2 border d-flex justify-content-center"
+                style="height: 220px;background-color: antiquewhite;border-radius: 10px;">
+                <div class="w-75">
+                    <div class="my-2 mx-auto" style="height: 100px;width:100px;">
+                        <img class="shadow" style="height: 100px;width:100px; border-radius: 50%;"
+                            src="/Images/7309681.jpg">
+                    </div>
+                    <h2 class="text-center" style="color:#452212">{{#each user }} {{this.name}} {{/each}}</h2>
+                    <figcaption class="text-center" style="opacity: 60%;">{{#each user}}{{this.email}} {{/each}}
+                    </figcaption>
+                    <p style="font-size: smaller; opacity: 50%;" class="d-flex justify-content-end">Joined in
+                        {{formattedDate}}</p>
+                </div>
+            </div>
+            <div class="row m-2">
+                {{!-- options section ------------------------------------------------------}}
+                <div class="optionDiv col-md-6 col-sm-12"
+                    style="height: 350px;background-color: antiquewhite;">
+                    <div class="row">
+                        <div class="p-2  col-6"><button class="btn  profBtn col-12" style="font-weight: 500;"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdropProfile">Edit Profile</button>
+                        </div>
+                        <div class="p-2  col-6"><button class="btn  profBtn col-12" style="font-weight: 500;"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add
+                                Address</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="p-2  col-6"><a href="/wishlist"><button class="btn  profBtn col-12" style="font-weight: 500;">Your
+                                Wishlist</button></div></a>
+                        <div class="p-2  col-6"><a href="/wallet"><button class="btn  profBtn col-12" style="font-weight: 500;">Your
+                                Wallet</button></div></a>
+                    </div>
+                    <div class="row">
+                        <div class="p-2  col-6"><a style="text-decoration: none;color:black" href="/order_history"><button class="btn  profBtn col-12" style="font-weight: 500;">Order History</button></a></div>
+                        <div class="p-2  col-6"><a href="/contact"><button class="btn  profBtn col-12" style="font-weight: 500;">Contact
+                                </button></div></a>
+                    </div>
+                    <form>
+                        <div class="p-2 mt-4 col-12"><button class="btn logoutBtn col-12" style="font-weight: 500;"
+                                id="logOutBtn">Logout</button></div>
+                    </form>
+
+                </div>
+                <div class="border col-md-6 col-sm-12 " style="height: 350px;background-color:antiquewhite">
+                    {{#if addressNotFound}}
+                    <div class="mt-5 text-center">
+                        <i style="font-size: 50px;opacity: 50%;" class="bi bi-journal-x"></i>
+                        <h3 style="opacity: 50%;">No address found</h3>
+                        <P style="opacity: 50%;">Add You address</P>
+                    </div>
+
+                    {{else}}
+                    <div class="addressPlaced">
+                        {{!-- end options section ------------------------------------------------------}}
+                        {{!-- Address section ------------------------------------------------------}}
+                        <div class="d-flex">
+                            <p>DEFAULT ADDRESS</p>
+                            <button class="btn" id="editAddress" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrops"
+                                style="border: 1px solid black;margin-left: auto;">Edit</button>
+                            <button class="btn" id="removeAddress" style="border: 1px solid black;float: right;"><i
+                                    class="bi bi-trash3-fill"></i></button>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;" class="col-form-label">Name</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <input class="form-control" type="text"
+                                    value="{{#each userAddress}}{{this.name}}{{/each}}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;" class="col-form-label">Mobile</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <input class="form-control" type="text" value="{{#each userAddress}}{{mobile}}{{/each}}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;" class="col-form-label">Pincode</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <input class="form-control" type="text"
+                                    value="{{#each userAddress}}{{pincode}}{{/each}}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;" class="col-form-label">City</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <input class="form-control" type="text" value="{{#each userAddress}}{{city}}{{/each}}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;"
+                                    class="col-form-label">District</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <input class="form-control" type="text"
+                                    value="{{#each userAddress}}{{district}}{{/each}}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;" class="col-form-label ">State</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <input class="form-control" type="text" value="{{#each userAddress}}{{state}}{{/each}}"
+                                    aria-label="Disabled input example" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="inputPassword6" style="width: 100px;" class="col-form-label">Address</label>
+                            </div>
+                            <div class="col-auto" style="width: 70%;">
+                                <textarea style="height:80px;" class="form-control" id="exampleFormControlTextarea1"
+                                    aria-label="Disabled input example" disabled readonly
+                                    rows="3">{{#each userAddress}}{{this.address}}{{/each}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- end addrss section --}}
+</section>
+
+
+<!--Edit Profile Modal -->
+<div class="modal fade" id="staticBackdropProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Profile</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="user-box mx-2">
+                    <input type="text" name="name" id="nameProfile" value="{{#each user}}{{this.name}}{{/each}}">
+                    <label>Name</label>
+                    <label class="d-flex justify-content-end" id="nameErrorProfile"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                {{!-- <div class="user-box mx-2">
+                    <input type="email" name="email" id="emailProfile" value="{{#each user}}{{this.email}}{{/each}}">
+                    <label>Email</label>
+                    <label class="d-flex justify-content-end" id="emailErrorProfile"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class="user-box mx-2">
+                    <input type="text" name="mobile" id="mobileProfile" value="{{#each user}}{{this.mobile}}{{/each}}">
+                    <label>Mobile Number</label>
+                    <label class="d-flex justify-content-end" id="mobileErrorProfile"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+
+                </div> --}}
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" id="editProfileBtn" class="btn btn-primary">Update Profile</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+    <!-- jquery -->
+    <script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- count down -->
+    <script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+    <!-- isotope -->
+    <script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+    <!-- waypoints -->
+    <script src="/stylesheet/assets/js/waypoints.js"></script>
+    <!-- owl carousel -->
+    <script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+    <!-- magnific popup -->
+    <script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- mean menu -->
+    <script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+    <!-- sticker js -->
+    <script src="/stylesheet/assets/js/sticker.js"></script>
+    <!-- main js -->
+    <script src="/stylesheet/assets/js/main.js"></script>
+
+<script src="/javaScript/addresssValidation.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    /*document.addEventListener('DOMContentLoaded', function () {
+        const successModalButton = document.getElementById('successCartRemoveButton');
+        successModalButton.click();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const warningMaximumReach = document.getElementById('successWishlistRemoveButton');
+        warningMaximumReach.click()
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const sucessBtn = document.getElementById('successModalButton');
+        sucessBtn.click();
+    });*/
+
+    $(document).ready(function () {
+        $(".deleteBtn").click(function () {
+            const productId = $(this).data("product-id");
+            $('.deleteConfirm').click(function () {
+                const successModalButton = document.getElementById('successWishlistButtonFor');
+                successModalButton.click();
+                setTimeout(() => {
+                    $.ajax({
+                        type: "POST",
+                        url: "/profile/delete_address", // Your server route for adding items to the cart
+                        data: { productId: productId },
+                        success: function (data) {
+
+                            setTimeout(() => {
+                                const successModalButton = document.getElementById('successWishlistButton');
+                                successModalButton.click();
+                            }, 1000)
+                        },
+                        error: function (error) {
+                            console.error(error);
+                        }
+                    });
+                }, 2000)
+            })
+        });
+    });
+
+    //save address
+    const addressSubmit = document.getElementById('addressSubmit');
+    addressSubmit.addEventListener('click', () => {
+        const name = document.getElementById('name').value
+        const mobile = document.getElementById('mobile').value
+        const city = document.getElementById('city').value
+        const pincode = document.getElementById('pincode').value
+        const district = document.getElementById('district').value
+        const state = document.getElementById('state').value
+        const address = document.getElementById('address').value
+        const isvalid = validate()
+        if (isvalid) {
+            const data = {
+                name: name,
+                mobile: mobile,
+                city: city,
+                pincode: pincode,
+                district: district,
+                state: state,
+                address: address
+            }
+
+            if (data) {
+                $.ajax({
+                    type: "POST",
+                    url: "/profile/add_address", // Your server route for adding items to the cart
+                    data: data,
+                    success: function (data) {
+                        // location.reload();
+                        if (data.status == 'success') {
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Address Added',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000)
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+        }
+    })
+
+    //Delete address
+    const removeAddress = document.getElementById('removeAddress');
+    if (removeAddress) {
+        
+        removeAddress.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log('HELo DElete')
+            const response = Swal.fire({
+                title: "Are you Sure ",
+                text: "To Delete This Address",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#990f0f',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let productId = 1
+                    $.ajax({
+                        type: "POST",
+                        url: "/profile/delete_address", // Your server route for adding items to the cart
+                        data: { productId },
+                        success: function (data) {
+                            if (data.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Address Removed',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                })
+                                setTimeout(() => {
+                                    location.reload()
+                                }, 2000)
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: result.message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+
+                        },
+                        error: function (error) {
+                            console.error(error);
+                        }
+                    })
+                }
+            })
+        })
+
+    }
+    //Edit address
+    const editAddressBtn = document.getElementById('editAddressBtn');
+    editAddressBtn.addEventListener('click', () => {
+        const name = document.getElementById('EditName').value
+        const mobile = document.getElementById('EditMobile').value
+        const city = document.getElementById('EditCity').value
+        const pincode = document.getElementById('EditPincode').value
+        const district = document.getElementById('EditDistrict').value
+        const state = document.getElementById('EditState').value
+        const address = document.getElementById('EditAddress').value
+        const addressId = document.getElementById('addressId').value
+        const isvalid = editAddressValidate()
+        if (isvalid) {
+            const data = {
+                name: name,
+                mobile: mobile,
+                city: city,
+                pincode: pincode,
+                district: district,
+                state: state,
+                address: address,
+                addressId: addressId,
+            }
+
+            if (true) {
+                $.ajax({
+                    type: "POST",
+                    url: "/profile/edit_address", // Your server route for adding items to the cart
+                    data: data,
+                    success: function (data) {
+                        // location.reload();
+                        if (data.status == 'success') {
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Address Updated',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000)
+                    },
+                    error: function (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: data.message,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        console.error(error);
+                    }
+                });
+            }
+
+        }
+    })
+
+    //Edit Profile
+    const editProfileBtn = document.getElementById('editProfileBtn')
+    editProfileBtn.addEventListener('click', () => {
+        const name = document.getElementById('nameProfile').value;
+       // const email = document.getElementById('emailProfile').value;
+       // const mobile = document.getElementById('mobileProfile').value
+        const isvalid = validateProfile();
+        if (isvalid) {
+            const data = {
+                name: name,
+                //email: email,
+                //mobile: mobile,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/profile/edit_profile", // Your server route for adding items to the cart
+                data: data,
+                success: function (data) {
+                    // location.reload();
+                    if (data.status == 'success') {
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Profile Updated Successfully',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: data.message,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                    setTimeout(() => {
+                        location.reload()
+                    }, 2000)
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    console.error(error);
+                }
+            });
+        }
+    })
+
+    const logOutBtn = document.getElementById('logOutBtn');
+    logOutBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const response = Swal.fire({
+            title: "Are you Sure ",
+            text: "Logout Account?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#990f0f',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No !'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let data = 'helo'
+                $.ajax({
+                    method: 'POST',
+                    url: '/logout',
+                    data: data,
+                    success: (data) => {
+                        if (data.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Logout successfully',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            setTimeout(() => {
+                                location.href = 'home'
+                            }, 2000)
+                        }
+                    },
+                    error: () => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                        })
+                    }
+                })
+            }
+        })
+    })
+
+</script>

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modernize Free</title>
+    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+    <link rel="stylesheet" href="/admin/css/styles.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="/admin" class="text-nowrap logo-img">
+                        <h2 style="font-weight: 800;color: #28b4ff;" class="m-3">Evolve.</h2>
+                        {{!-- <img src="/admin/images/logos/dark-logo.svg" width="180" alt="" /> --}}
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/dashboard" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/sales_report" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Sales Report</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">CONTROLS</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/orders" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/category" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Category</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/users" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Users</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Editing Functions</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/products" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link active" href="/admin/coupons" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu active">Coupons</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/banners" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Banners</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/offers" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">EXTRA</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/deal_of_month" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Deal Of Month</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <header class="app-header">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                                href="javascript:void(0)">
+                                <i class="ti ti-menu-2"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                                <i class="ti ti-bell-ringing"></i>
+                                <div class="notification bg-primary rounded-circle"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li>
+                                <form action="/admin/contact"><button
+                                        style="border-style: none;background-color: white;" type="submit" class="">
+                                        <img src="/admin/images/profile/user-1.jpg" alt="" width="35" height="35"
+                                            class="rounded-circle">
+                                    </button></form>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!--  Header End -->
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <h3>Add Coupon</h3>
+                            <form action="/admin/coupons" style="margin-left: auto;"><button class="btn btn-success"><i
+                                        class="bi bi-arrow-left-short"></i>Back</button></form>
+                        </div>
+                        <div>
+                            <form class="mt-5" id="addCouponForm" method="post">
+                                <div class="mb-3">
+                                    <div class="d-flex"><label for="" class="form-label">Coupon Code</label><label
+                                            id="couponCodeError" style="margin-left: auto;font-size: small;color: red;"
+                                            for="" class="form-label"></label></div>
+                                    <input type="text" class="form-control" id="couponCode"
+                                        placeholder="Enter coupon code">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex"><label for="exampleFormControlTextarea1"
+                                            class="form-label">Coupon Description</label><label id="couponDescError"
+                                            style="margin-left: auto;font-size: small;color: red;" for=""
+                                            class="form-label"></label></div>
+                                    <textarea placeholder="Enter coupon description" class="form-control"
+                                        id="couponDescription" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex"><label for="" class="form-label">Minimum Order
+                                            Amount</label><label id="minOrderError"
+                                            style="margin-left: auto;font-size: small;color: red;" for=""
+                                            class="form-label"></label></div>
+                                    <input type="number" class="form-control" id="minOrder"
+                                        placeholder="Enter minimum order amount">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex"><label for="" class="form-label">Discount
+                                            Percentage</label><label id="discountPercentageError"
+                                            style="margin-left: auto;font-size: small;color: red;" for=""
+                                            class="form-label"></label></div>
+                                    <input type="number" class="form-control" id="discountPercentage"
+                                        placeholder="Enter minimum order amount">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex"><label for="" class="form-label">Maximum Discount
+                                            Amount</label><label id="maxDiscountError"
+                                            style="margin-left: auto;font-size: small;color: red;" for=""
+                                            class="form-label"></label></div>
+                                    <input type="number" class="form-control" id="maxDiscount"
+                                        placeholder="Enter maximum discount amount">
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="d-flex"><label for="" class="form-label">Coupon Starting
+                                                Date</label><label id="startingDateError"
+                                                style="margin-left: auto;font-size: small;color: red;" for=""
+                                                class="form-label"></label></div>
+                                        <input type="date" class="form-control" id="startingDate">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex"><label for="" class="form-label">Coupon Expiration
+                                                Date</label><label id="expiryDateError"
+                                                style="margin-left: auto;font-size: small;color: red;" for=""
+                                                class="form-label"></label></div>
+                                        <input type="date" class="form-control" id="expiryDate">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Coupon</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/javaScript/couponValidate.js"></script>
+    <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/js/sidebarmenu.js"></script>
+    <script src="/admin/js/app.min.js"></script>
+    <script src="/admin/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="/admin/libs/simplebar/dist/simplebar.js"></script>
+    <script src="/admin/js/dashboard.js"></script>
+    <script>
+        const addCouponForm = document.getElementById('addCouponForm');
+        addCouponForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const islvalid = validate();
+            if (islvalid) {
+                const data = {
+                    couponCode: document.getElementById('couponCode').value,
+                    couponDescription: document.getElementById('couponDescription').value,
+                    minOrder: document.getElementById('minOrder').value,
+                    maxDiscount: document.getElementById('maxDiscount').value,
+                    startingDate: document.getElementById('startingDate').value,
+                    expiryDate: document.getElementById('expiryDate').value,
+                    discountPercentage: document.getElementById('discountPercentage').value
+                }
+                $.ajax({
+                    method: 'POST',
+                    url: '/admin/coupons/add_coupon',
+                    data: data,
+                    success: (result) => {
+                        if (result.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Coupon Added successfully',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            setTimeout(() => {
+                                location.href = '/admin/coupons'
+                            }, 2000)
+                        } else if (result.status == 'warning') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: result.message,
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'An error o',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    }, error: () => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error occured',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                })
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>

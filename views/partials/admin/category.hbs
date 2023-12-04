@@ -1,0 +1,473 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modernize Free</title>
+    <style>
+
+    </style>
+    {{!-- sweet alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+    <link rel="stylesheet" href="/admin/css/styles.min.css" />
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="/admin" class="text-nowrap logo-img">
+                        <h2 style="font-weight: 800;color: #28b4ff;" class="m-3">Evolve.</h2>
+                        {{!-- <img src="/admin/images/logos/dark-logo.svg" width="180" alt="" /> --}}
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/dashboard" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/sales_report" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i></i>
+                                </span>
+                                <span class="hide-menu">Sales Report</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">CONTROLS</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/orders" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/category" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Category</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/users" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Users</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Editing Functions</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/products" aria-expanded="false">
+                                <span>
+                                   <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/coupons" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Coupons</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/banners" aria-expanded="false">
+                                <span>
+                                     <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Banners</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/offers" aria-expanded="false">
+                                <span>
+                                     <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">EXTRA</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/deal_of_month" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Deal Of Month</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <header class="app-header">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                                href="javascript:void(0)">
+                                <i class="ti ti-menu-2"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                                <i class="ti ti-bell-ringing"></i>
+                                <div class="notification bg-primary rounded-circle"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li>
+                                <form action="/admin/contact"><button style="border-style: none;background-color: white;" type="submit" class="" >
+                                    <img src="/admin/images/profile/user-1.jpg" alt="" width="35" height="35"
+                                        class="rounded-circle">
+                                </button></form>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!--  Header End -->
+
+            <!-- models -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" style="display: none;" id="modelBtn" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Edit Category</label>
+                                <input type="text" id="editCatInput" class="form-control">
+                                <span style="color: red;" id="editCategoryError"></span>
+                                <input type="hidden" id="idInput">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--model end -->
+
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold mb-4">Add Category</h5>
+                        <div>
+                            <label class="mb-2">Add Category</label>
+                            <div class="d-flex">
+                                <input style="height: 45px; width:450px" class="form-control me-2"
+                                    placeholder="Enter Category Name" name="name" id="categoryName">
+
+                                <button class="btn btn-outline-primary" id="addCategoryBtn" type="submit">Add
+                                    Category</button>
+                            </div>
+                            <span id="categoryError" style="color: red;"></span>
+                            <h4 class="mt-5">Category List</h4>
+                            <table class="table mt-4">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each category}}
+                                    <tr class="btns">
+                                        <td>{{this._id}}</td>
+                                        <td style="color: rgb(48, 48, 183); font-weight: 500;">{{this.name}}</td>
+                                        <td>
+                                            <button style="" data-cat-name="{{this.name}}"
+                                                data-category-id="{{this._id}}"
+                                                class="btn btn-primary editBtn">Edit</button>
+
+                                        </td>
+                                        <td>
+                                            <button data-cat-name="{{this.name}}" data-category-id="{{this._id}}"
+                                                    style="" class=" btn btn-danger deleteBtn">Delete</button>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/js/sidebarmenu.js"></script>
+    <script src="/admin/js/app.min.js"></script>
+    <script src="/admin/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="/admin/libs/simplebar/dist/simplebar.js"></script>
+    <script src="/admin/js/dashboard.js"></script>
+    <script>
+        const addCategoryBtn = document.getElementById('addCategoryBtn')
+        const category = document.getElementById('categoryName')
+        addCategoryBtn.addEventListener('click', () => {
+            const isvalid = validate()
+            if (isvalid) {
+                console.log(category.value);
+                let data = {
+                    name: category.value
+                }
+                $.ajax({
+                    method: 'POST',
+                    url: '/admin/category/add_category',
+                    data: data,
+                    success: (data) => {
+                        if (data.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Category Added',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            setTimeout(() => {
+                                location.reload();
+                            }, 2000)
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    },
+                    error: () => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error Occured',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000)
+                    }
+                })
+            }
+        })
+
+
+        function Editvalidate() {
+            const nameRegex = /^[A-Z]/;
+            const name = document.getElementById('editCatInput')
+            const nameError = document.getElementById('editCategoryError')
+
+            if (name.value.trim() == '') {
+                nameError.innerHTML = 'Field is Required';
+                name.style.borderColor = 'red'
+                setTimeout(() => {
+                    nameError.innerHTML = ''
+                    name.style.borderColor = ''
+                }, 5000)
+                return false
+            }
+
+            if (!nameRegex.test(name.value)) {
+                nameError.innerHTML = 'First Letter should be capital'
+                name.style.borderColor = 'red'
+                setTimeout(() => {
+                    nameError.innerHTML = ''
+                    name.style.borderColor = ''
+                }, 5000)
+                return false
+            }
+            return true
+        }
+        function validate() {
+            const nameRegex = /^[A-Z]/;
+            const name = document.getElementById('categoryName')
+            const nameError = document.getElementById('categoryError')
+
+            if (name.value.trim() == '') {
+                nameError.innerHTML = 'Field is Required';
+                name.style.borderColor = 'red'
+                setTimeout(() => {
+                    nameError.innerHTML = ''
+                    name.style.borderColor = ''
+                }, 5000)
+                return false
+            }
+
+            if (!nameRegex.test(name.value)) {
+                nameError.innerHTML = 'First Letter should be capital'
+                name.style.borderColor = 'red'
+                setTimeout(() => {
+                    nameError.innerHTML = ''
+                    name.style.borderColor = ''
+                }, 5000)
+                return false
+            }
+            return true
+        }
+        //Edit actions
+        const saveBtn = document.getElementById('saveBtn');
+        saveBtn.addEventListener('click', () => {
+            const isvalid = Editvalidate()
+            if (isvalid) {
+                const id = document.getElementById('idInput');
+                const catId = id.value
+                const editCatInput = document.getElementById('editCatInput').value
+                $.ajax({
+                    method: 'POST',
+                    data: { name: editCatInput },
+                    url: `/admin/category/edit_category/${catId}`,
+                    success: (data) => {
+                        if (data.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Category updated Successfully',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                            setTimeout(() => {
+                                location.reload()
+                            }, 2000)
+                        }
+                    },
+                    error: () => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error Occured',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                })
+            }
+        })
+
+        document.querySelectorAll('.btns').forEach(btn => {
+            //const unblockBtn = btn.querySelector('.unBlockBtn');
+            //const blockBtn = btn.querySelector('.blockBtn');
+
+
+            $(".editBtn").click(function () {
+                const categoryId = $(this).data("category-id");
+                const catName = $(this).data('cat-name');
+                const editCatInput = document.getElementById('editCatInput');
+                const idInput = document.getElementById('idInput');
+                idInput.value = categoryId;
+                console.log(categoryId);
+                editCatInput.value = catName;
+                document.getElementById('modelBtn').click()
+            })
+
+            $(".deleteBtn").click(function () {
+                const id = $(this).data("category-id");
+                const response = Swal.fire({
+                    title: "Are you Sure ",
+                    text: "To Delete this Category",
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#990f0f',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No !'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "POST",
+                            url: `/admin/category/delete_category/${id}`, // Your server route for adding items to the cart
+                            success: function (data) {
+                                if(data.status=='success'){
+                                      Swal.fire({
+                                    icon: 'success',
+                                    title: 'Category Deleted Successfully',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                })
+                                setTimeout(() => {
+                                    location.reload()
+                                }, 2000)
+
+                                }
+                            },
+                            error: function (error) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: error.message,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        });
+                    }
+                })
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

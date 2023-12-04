@@ -1,0 +1,277 @@
+body{
+    margin-top: 54px;
+}
+.the-box{
+    margin: 0;
+    height: 90vh;
+    background: rgb(252, 252, 252);
+    position: fixed;
+    
+}
+.lists{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20%;
+    font-size: large;
+    line-height: 45px;
+    font-weight: 500;
+}
+
+.list-title{
+    margin-top: 4%;
+    padding-left: 20%;
+}
+.dashboard{
+    margin-left: 30%;
+}
+#bxs-item{
+    color: #E59F00;
+}
+#currentpage{
+    border-style: none;
+    margin-right: 15px;
+    border-radius: 8px;
+    background-color: #F9EDE8;
+    color: #E59F00;
+}
+#successalert{
+    border-radius: 10px;
+    color: #fff;
+    background:-webkit-linear-gradient(45deg,#359617,#44b82f);
+    margin-left: 9%;
+    position: relative;
+    transition: top 2s;
+    opacity: 0;
+    width: 250px;
+    height: 70px;
+    animation: moveDownAndUp 5s ease-in-out forwards;
+}
+@keyframes moveDownAndUp {
+    0% {
+        top: 0;
+        opacity: 0; /* Start position and invisible */
+    }
+    30% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    50% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    60% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    80% {
+        top: 20px; /* Hold for 3 seconds */
+        opacity: 1; /* Stay visible */
+    }
+    100% {
+        top: 0; /* Return to the top */
+        opacity: 0; /* Invisible again */
+    }
+}
+
+.btns{
+    border-radius: 5px;
+    border:1px grey solid;
+    color: white;
+    font-size: small;
+    background-color: rgb(101, 99, 99);
+}
+.btns:hover{
+    background-color: rgb(56, 55, 55);
+}
+
+
+/*dialog*/
+
+
+:root {
+	--vs-primary: 29 92 255;
+}
+
+/*Dialog Styles*/
+dialog {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+	padding: 1rem 3rem;
+	background: white;
+	max-width: 400px;
+	padding-top: 2rem;
+	border-radius: 20px;
+	border: 0;
+	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+	animation: fadeIn 0.5s ease both;
+	&::backdrop {
+		animation: fadeIn 1s ease both;
+		background: rgba(150, 150, 150, 0.4);
+		z-index: 2;
+		/* backdrop-filter: blur(20px); */
+	}
+	.x {
+		filter: grayscale(1);
+		border: none;
+		background: none;
+		position: absolute;
+		top: 15px;
+		right: 10px;
+		transition: ease filter, transform 0.3s;
+		cursor: pointer;
+		transform-origin: center;
+		&:hover {
+			filter: grayscale(0);
+			transform: scale(1.1);
+		}
+	}
+	h2 {
+		font-weight: 600;
+		font-size: 2rem;
+		padding-bottom: 1rem;
+	}
+	p {
+		font-size: 1rem;
+		line-height: 1.3rem;
+		padding: 0.5rem 0;
+		a {
+			&:visited {
+				color: rgb(var(--vs-primary));
+			}
+		}
+	}
+}
+
+/*General Styles*/
+
+/* button.primary {
+	display: inline-block;
+	font-size: 0.8rem;
+	color: #fff !important;
+	background: rgb(var(--vs-primary) / 100%);
+	padding: 13px 25px;
+	border-radius: 17px;
+	transition: background-color 0.1s ease;
+	box-sizing: border-box;
+	transition: all 0.25s ease;
+	border: 0;
+	cursor: pointer;
+	box-shadow: 0 10px 20px -10px rgb(var(--vs-primary) / 50%);
+	&:hover {
+		box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
+		transform: translateY(-5px);
+	}
+} */
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+        
+	}
+	to {
+		opacity: 1;
+        
+	}
+}
+
+
+.product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 270px;
+    background: white;
+}
+
+
+
+/*alert*/
+
+.modal#statusSuccessModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusSuccessModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusSuccessModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusSuccessModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusSuccessModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusSuccessModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100%{
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash-check { 
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+@keyframes dash-check {
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+.box00{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}

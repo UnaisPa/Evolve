@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;;
+}
+
+
+
+
+#navs{
+    background: rgb(241, 241, 241);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+@keyframes smoothHoverAnimation {
+    0% {
+      color: #B88E2F;
+    }
+    100% {
+      color:#7d5b0b;
+    }
+  }
+#evolve{
+    color: #B88E2F;
+    animation-fill-mode:forwards; /* Keeps the final state of the animation */
+    animation-play-state:paused;
+}
+#evolve:hover{
+    animation-name: smoothHoverAnimation;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-play-state: running; 
+}
+#itemm{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item{
+    font-weight: 500;
+}
+.nav-item .nav-link{
+    color: rgb(71, 71, 71);
+}
+.nav-item .nav-link:hover{
+    color: #E59F00;
+}
+
+.bxs-user-circle{
+    transition: transform 0.4s;
+}
+.bxs-user-circle:hover{
+        color: #B88E2F;
+        transform: scale(1.2);
+}
+#admin{
+    display: none;
+}
+@media screen and (max-width:850px){
+   .admin-icon{
+    display: none;
+   }
+}
+
+@media screen and (max-width:590px) {
+    #admin{
+        display: flex;
+    }
+    .nav-item .nav-link:hover{
+        border-radius: 5px;
+        border: 1px #B88E2F solid;
+    }
+}
+#add-product{
+    color:  #E59F00;
+}
+

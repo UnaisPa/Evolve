@@ -1,0 +1,1068 @@
+<head>
+    <link rel="stylesheet" href="/stylesheet/productView.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+    {{!-- sweet alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+</head>
+
+
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <h3 style="color: orange;margin-top: 9px;">Evolve.</h3>
+                            {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item"><a href="/home">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            {{#if verified}}<li><a href="/profile">Profile</a></li>
+                            {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
+                            {{!-- <li><a href="shop.html">Shop</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                </ul>
+                            </li> --}}
+
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                    <a>
+                                        <form action="/shop" method="get" style="margin-right:2%;">
+                                            <div style="" class="input-group">
+                                                <input id="searchBar" name="search" style="width: 130px;height: 40px;"
+                                                    class="form-control" aria-describedby="button-addon2"
+                                                    placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+                                                <button
+                                                    style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                    class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                        style="font-size: 20px;" class='bx bx-search'></i></button>
+                                            </div>
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+
+<dialog id="dialog">
+    <h3>Login Required !</h3>
+    <p>Please log in to add products to your cart. Create an account if you don't have one yet.</p>
+    <form action="/login" method="get"><button class="btn btn explorebtn">Login</button></form>
+    <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+</dialog>
+<button id="dialogBtn" style="display: none;" onclick="window.dialog.showModal();"></button>
+
+<section>
+    <div id="top-div" class="border-top">
+
+
+    </div>
+</section>
+<!-- Product Details sectoion -->
+
+{{!-- Succes model for add to cart --}}
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3">Item successfully added to your cart.</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusSuccessModal" id="successModalButton">Success Modal</button>
+{{!-- success model end --}}
+{{!-- cart remove moedel --}}
+<div class="modal fade" id="statusCartRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle-fill"></i>
+                <h5 class="text mt-3" style="color: rgb(150, 121, 83);">The product has already been added to your Cart.
+                </h5>
+
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                <form action="/cart"> <button type="submit" class="btn btn-sm mt-3 btn border"
+                        data-bs-dismiss="modal">Check Cart</button></form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusCartRemoveModal" id="successCartRemoveButton">Success Modal</button>
+{{!-- cart remove model end --}}
+{{!-- wishlist moedel --}}
+<div class="modal fade" id="statusWishlistModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3">Item successfully added to your Wishlist.</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistModal" id="successWishlistButton">Success Modal</button>
+{{!-- model end --}}
+
+{{!-- wishlist remove moedel --}}
+<div class="modal fade" id="statusWishlistRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle"></i>
+                <h5 class="text mt-3" style="color: rgb(150, 121, 83);">The product has already been added to your
+                    wishlist.</h5>
+
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                <button type="button" style="font-weight: 500;" class="btn btn-sm mt-3 btn border"
+                    data-bs-dismiss="modal">Check Wishlist</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistRemoveModal" id="successWishlistRemoveButton">Success Modal</button>
+{{!-- wishlist remove model end --}}
+
+
+
+<section class="container mb-5">
+    <div class="main-div mt-5 row">
+
+        <div class="image-card border">
+            {{!-- <div class="image-container shadow">
+                <img{{#each product}} {{#if image.[0]}}src="/productimages/{{image.[0]}}" {{/if}}{{/each}}
+                    alt="Product Image" id="product-image">
+            </div> --}}
+
+            <div class="" style="">
+                <div id="carouselExampleDarks" class="carousel carousel-dark slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active product-container" data-bs-interval="10000">
+                            <div class="image-container shadow">
+                                <img{{#each product}} {{#if image.[0]}}src="/productimages/{{image.[0]}}"
+                                    {{/if}}{{/each}} alt="Product Image" class="productimage" id="product-image">
+                            </div>
+                        </div>
+                        <div class="carousel-item product-container" data-bs-interval="2000">
+                            <div class="image-container shadow">
+                                <img{{#each product}} {{#if image.[1]}}src="/productimages/{{image.[1]}}"
+                                    {{/if}}{{/each}} alt="Product Image" class="productimage" id="product-image">
+                            </div>
+                        </div>
+                        <div class="carousel-item product-container">
+                            <div class="image-container shadow">
+                                <img{{#each product}} {{#if image.[2]}}src="/productimages/{{image.[2]}}"
+                                    {{/if}}{{/each}} alt="Product Image" class="productimage" id="product-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mx-3 mt-4 nav justify-content-center nav-underline"
+                style="justify-content: space-around;">
+                <button type="button" data-bs-target="#carouselExampleDarks" data-bs-slide-to="0"
+                    class=" btnitem nav-link" aria-current="page" aria-current="true" aria-label="Slide 1"><img
+                        style="width: 50px;height: 50px;" {{#each product}} {{#if
+                        image.[0]}}src="/productimages/{{image.[0]}}" {{/if}}{{/each}} alt="Product Image"
+                        id="product-image">
+                </button>
+
+                {{#each product}}{{#if image.[1]}}
+                <button type="button" data-bs-target="#carouselExampleDarks" data-bs-slide-to="1"
+                    class=" btnitem nav-link" aria-label="Slide 2"><img style="width: 50px;height: 50px;"
+                        src="/productimages/{{image.[1]}}" alt="Product Image" id="product-image">
+                </button>
+                {{/if}}{{/each}}
+                {{#each product}}{{#if image.[2]}}
+                <button type="button" data-bs-target="#carouselExampleDarks" data-bs-slide-to="2"
+                    class=" btnitem nav-link" aria-label="Slide 3"><img style="width: 50px;height: 50px;"
+                        src="/productimages/{{image.[2]}}" alt="Product Image" id="product-image">
+                </button>
+                {{/if}}{{/each}}
+            </div>
+        </div>
+
+
+        <div class="col-md-6  details">
+            <div class="items">
+                {{#each product}}<h2 class="">{{this.name}}</h2>{{/each}}
+                <div style="" class="d-flex mt-4">
+                    <h5 class="offer-price">Rs. {{#each product}} {{this.offerprice}}{{/each }}.00</h5>
+                    {{#each product}}<small style="margin-left: 5px;margin-top: 2px;"
+                        class="price">{{this.price}}</small>{{/each }}
+                </div>
+                <span type="" class=" position-relative">
+                    ₹{{discount}} OFF
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{percentage}}%
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </span>
+
+                <p class="text-secondary mt-2">{{#eq countReview 0}}{{else}}{{countReview}} Reviews{{/eq}}</p>
+                {{#if Sofa}}<p style="font-family: 'Poppins', sans-serif;">Our Sofa designed with the highest quality
+                    materials and attention to detail, our sofas
+                    promise durability and timeless elegance.</p>{{/if}}
+                {{#if Lighting}}<p style="font-family: 'Poppins', sans-serif;">Our Lightings designed to enhance your
+                    living spaces while providing top-tier
+                    quality.It built with superior craftsmanship and the latest technology to ensure longevity and
+                    energy efficiency. </p> {{/if}}
+                {{#if Chairs}}<p style="font-family: 'Poppins', sans-serif;">Our chairs are crafted with precision and
+                    high-grade materials to ensure they
+                    withstand
+                    the test of time while adding a touch of sophistication to your home.</p> {{/if}}
+                {{#if Decor}}<p style="font-family: 'Poppins', sans-serif;"> Elevate your interior with our handpicked
+                    home decor items, each a testament to
+                    quality and style. </p> {{else}}
+                <p style="font-family: 'Poppins', sans-serif;"> Our collections offers a wide range of styles to cater
+                    to different tastes and interior
+                    design{{/if}}
+                    preferences. </p>
+                <div class="bottom-detail" style="padding-top: 5px;font-family: 'Poppins', sans-serif;">
+                    <p style="font-family: 'Poppins', sans-serif;">Category : {{#each
+                        product}}{{this.category}}{{/each}}<br>
+                        Colors availabe : <span
+                            style="background-color: white;color:{{#each product}}{{this.color}}{{/each}};">{{#each
+                            product}}{{this.color}}{{/each}}</span></p>
+                </div>
+                <div class="d-flex mt-2">
+                    {{!-- <button class="add-to-cart-btn btn btn cart-btn" data-product-id="{{id}}" {{#if
+                        verified}}{{#if cart}} style="background-color: rgb(250, 231, 225);" {{/if}}{{/if}}>{{#if
+                        verified}}{{#if
+                        cart}}Added to Cart{{else}}Add to Cart{{/if}}{{else}}Add to Cart{{/if}}</button> --}}
+                    <a class="cart-btn add-to-cart-btn" data-product-id="{{id}}"><i class="fas fa-shopping-cart"></i>
+                        Add to Cart</a>
+                    <a style="width: 55px;" class="cart-btn ml-2 add-to-wishlist-btn" data-product-id="{{id}}"><i
+                            class="bi bi-heart-fill"></i></a>
+                    {{!-- <button class="add-to-wishlist-btn btn btn explorebtn" {{#if wishlist}}
+                        style="background-color: rgb(250, 231, 225);" {{/if}}data-product-id="{{id}}">{{#if
+                        wishlist}}Added to wishlist{{else}}Add to wishlist{{/if}}</button> --}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<hr class=" mx-5">
+
+
+<div>
+    <div class="text-center mt-5 nav justify-content-center nav-underline">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class=" mx-3 btnitem nav-link "
+            aria-current="page" aria-current="true" aria-label="Slide 1">Description</button>
+        {{!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+            class="mx-3 btnitem nav-link" aria-label="Slide 2">More</button> --}}
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" class="mx-3 btnitem nav-link"
+            aria-label="Slide 3">Review</button>
+    </div>
+    <div class="mt-5 mx-5" style="margin-left: auto; margin-right: auto;">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active " data-bs-interval="10000">
+                    <div class=" car-div center-div w-75">
+                        <h5 class="text-center" style="font-weight: 500;font-family: 'Poppins', sans-serif;">Description
+                        </h5>
+                        <p style="font-family: 'Poppins', sans-serif;" class="text">{{#each product}}
+                            {{this.description}}{{/each}}</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class=" car-div center-div w-75">
+                        <div class="d-flex mb-5">
+                            <h5 style="font-weight: 500;font-family: 'Poppins', sans-serif;" class="text-center">Reviews
+                            </h5>{{#if notLogin}}<a style="margin-left: auto;" type="button" class=" cart-btn"
+                                href="/login">Rate Product</a>{{else}}
+                            <a style="margin-left: auto;" type="button" class=" cart-btn" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Rate Product</a>
+                            {{/if}}
+                        </div>
+                        <div class="row">
+                            {{#eq countReview 0}}
+                            <div class="text-center mb-5">
+                                <span>No Reviews found!</span><br>
+                                {{#if notLogin}}<a style="margin-left: auto;" type="button" class=" cart-btn"
+                                    href="/login">Add Review</a>{{else}}
+                                <a style="margin-left: auto;" type="button" class=" cart-btn" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Add Review</a>
+                                {{/if}}
+                            </div>
+                            {{else}}
+                            <div class="col-md-4 border-right">
+                                <h4>Customer reviews</h4>
+                                {{#eq avg 1}}
+                                <div class="d-flex">
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <span style="font-size: 20px;" class="ml-2">{{avg}} Out of 5</span>
+                                </div>
+                                {{/eq}}
+                                {{#eq avg 2}}
+                                <div class="d-flex">
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <span style="font-size: 20px;" class="ml-2">{{avg}} Out of 5</span>
+                                </div>
+                                {{/eq}}
+                                {{#eq avg 3}}
+                                <div class="d-flex">
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <span style="font-size: 20px;" class="ml-2">{{avg}} Out of 5</span>
+                                </div>
+                                {{/eq}}
+                                {{#eq avg 4}}
+                                <div class="d-flex">
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star"></i>
+                                    <span style="font-size: 20px;" class="ml-2">{{avg}} Out of 5</span>
+                                </div>
+                                {{/eq}}
+                                {{#eq avg 5}}
+                                <div class="d-flex">
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <i style="color:#f28123;font-size: 20px;" class="bi bi-star-fill"></i>
+                                    <span style="font-size: 20px;" class="ml-2">{{avg}} Out of 5</span>
+                                </div>
+                                {{/eq}}
+
+
+                                <span>{{countReview}} global ratings</span><br>
+                                <div class="d-flex mt-2">
+                                    <small class="mx-1">5</small>
+                                    <div style="width: 220px;height: 18px;" class="progress" role="progressbar"
+                                        aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <div class="progress-bar bg-info" style="width: {{c5}}%;"></div>
+                                    </div>
+                                    <small class="ml-1">{{c5}}%</small>
+                                </div>
+
+                                <div class="d-flex mt-2">
+                                    <small class="mx-1">4</small>
+                                    <div style="width: 220px;height: 18px;" class="progress" role="progressbar"
+                                        aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <div class="progress-bar bg-info" style="width: {{c4}}%;"></div>
+                                    </div>
+                                    <small class="ml-1">{{c4}}%</small>
+                                </div>
+
+                                <div class="d-flex mt-2">
+                                    <small class="mx-1">3</small>
+                                    <div style="width: 220px;height: 18px;" class="progress" role="progressbar"
+                                        aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <div class="progress-bar bg-info" style="width: {{c3}}%;"></div>
+                                    </div>
+                                    <small class="ml-1">{{c3}}%</small>
+                                </div>
+
+                                <div class="d-flex mt-2">
+                                    <small class="mx-1">2</small>
+                                    <div style="width: 220px;height: 18px;" class="progress" role="progressbar"
+                                        aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <div class="progress-bar bg-info" style="width: {{c2}}%;"></div>
+                                    </div>
+                                    <small class="ml-1">{{c2}}%</small>
+                                </div>
+
+                                <div class="d-flex mt-2">
+                                    <small class="mx-1">1</small>
+                                    <div style="width: 220px;height: 18px;" class="progress" role="progressbar"
+                                        aria-label="Basic example" aria-valuenow="75" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <div class="progress-bar bg-info" style="width: {{c1}}%"></div>
+                                    </div>
+                                    <small class="mx-2">{{c1}}%</small>
+                                </div>
+                            </div>
+                            <div class="row col-md-8">
+                                {{#each reviews}}
+                                <div class="col-md-6 col-sm-12 mb-5">
+                                    <div>
+                                        <span><i style="font-size: 25px;" class="bi bi-person-circle"></i><span
+                                                class="ml-2" style="font-size:15px;">{{this.user}}</span></span><br>
+                                        {{#eq this.rating 1}}
+                                        <div class="d-flex">
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <span class="ml-2">1 Star</span>
+                                        </div>
+                                        {{/eq}}
+                                        {{#eq this.rating 2}}
+                                        <div class="d-flex">
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <span class="ml-2">2 Star</span>
+                                        </div>
+                                        {{/eq}}
+                                        {{#eq this.rating 3}}
+                                        <div class="d-flex">
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <span class="ml-2">3 Star</span>
+                                        </div>
+                                        {{/eq}}
+                                        {{#eq this.rating 4}}
+                                        <div class="d-flex">
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star"></i>
+                                            <span class="ml-2">4 Star</span>
+                                        </div>
+                                        {{/eq}}
+                                        {{#eq this.rating 5}}
+                                        <div class="d-flex">
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <i style="color:#f28123" class="bi bi-star-fill"></i>
+                                            <span class="ml-2">5 Star</span>
+                                        </div>
+                                        {{/eq}}
+                                        <span>Reviewed on {{this.formattedDate}}</span><br>
+                                        <h6 class="mt-2" style="font-weight: 500;">{{this.review}}</h6>
+                                        <h6 style="font-weight: 300;" class="text-secondary">Evolve User</h6>
+                                    </div>
+                                </div>
+                                {{/each}}
+
+                            </div>
+                            {{/eq}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<section class="container">
+    <hr>
+    <div>
+        <h4 class="text-center">Related Products</h4>
+        <div class="row cards">
+            {{#each getAllProducts}}
+            <div style="margin: auto;" class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="single-product-item">
+                    {{#if this.badge}}<div class="badge">{{badge}}</div>{{/if}}
+                    {{#if this.image}}
+                    <div class="product-image">
+                        <a href="/product_details/{{this._id}}"><img src="/productimages/{{this.image.[0]}}" alt=""></a>
+                    </div>
+                    {{/if}}
+                    <h3>{{this.name}}</h3>
+                    <p class="product-price"><span>category : {{this.category}}</span><i
+                            class="bi bi-currency-rupee"></i> {{this.offerprice}} </p>
+                    <div class="d-flex px-4 justify-content-center" style="margin-left: auto;margin-right: auto;">
+                        <a class="cart-btn add-to-cart-btn" data-product-id="{{this._id}}"><i
+                                class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        <a class="pt-2 add-to-wishlist-btn" data-product-id="{{this._id}}"
+                            style="width: 40px;margin-left: 15px;padding: 3px;border-radius: 50%;"><i
+                                style="font-size: 20px;color:rgb(255, 123, 0)" class="bi bi-heart-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</section>
+<!--Model -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                {{!-- <h1 style="font-weight: 500;" class="modal-title fs-5" id="exampleModalLabel">Rate Product :
+                    {{#each
+                    product}}{{this.name}}{{/each}}</h1> --}}
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="wrapper">
+                        <div class="master">
+                            <span class="text-center">Review And rating</h1><br>
+                                <h1>{{#each product}}{{this.name}}{{/each}}</h1>
+                            </span><br>
+                            <span>How was your experience about our product?</span>
+
+                            <div class="rating-component">
+                                <div class="status-msg">
+                                    <label>
+                                        <input class="rating_msg" type="hidden" name="rating_msg" value="" />
+                                    </label>
+                                </div>
+                                <div class="stars-box">
+                                    <i class="star fa fa-star" title="1 star" data-message="Poor" data-value="1"></i>
+                                    <i class="star fa fa-star" title="2 stars" data-message="Too bad"
+                                        data-value="2"></i>
+                                    <i class="star fa fa-star" title="3 stars" data-message="Average quality"
+                                        data-value="3"></i>
+                                    <i class="star fa fa-star" title="4 stars" data-message="Nice" data-value="4"></i>
+                                    <i class="star fa fa-star" title="5 stars" data-message="very good qality"
+                                        data-value="5"></i>
+                                </div>
+                                <div class="starrate">
+                                    <label>
+                                        <input class="ratevalue" type="hidden" name="rate_value" value="" />
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="feedback-tags">
+                                <div class="tags-container" data-tag-set="1">
+                                    <div class="question-tag">
+                                        Why was your experience so bad?
+                                    </div>
+                                </div>
+                                <div class="tags-container" data-tag-set="2">
+                                    <div class="question-tag">
+                                        Why was your experience so bad?
+                                    </div>
+
+                                </div>
+
+                                <div class="tags-container" data-tag-set="3">
+                                    <div class="question-tag">
+                                        Why was your average rating experience ?
+                                    </div>
+                                </div>
+                                <div class="tags-container" data-tag-set="4">
+                                    <div class="question-tag">
+                                        Why was your experience good?
+                                    </div>
+                                </div>
+
+                                <div class="tags-container" data-tag-set="5">
+                                    <div class="make-compliment">
+                                        <div class="compliment-container">
+                                            Give a compliment
+                                            <i class="far fa-smile-wink"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tags-box">
+                                    {{!-- <input style="width: 200px;height: 60px;" type="text" class="tag form-control"
+                                        name="comment" id="inlineFormInputName" placeholder="please enter your review">
+                                    <input type="hidden" name="product_id" value=""> --}}
+                                    <textarea placeholder="Enter your review" style="width: 360px;"
+                                        class="tag form-control" name="comment" id="reviewArea" rows="3"></textarea>
+                                    <input type="hidden" value="{{#each product}}{{this.name}}{{/each}}"
+                                        id="productName">
+                                    <input type="hidden" id="rateValue">
+                                </div>
+
+                            </div>
+
+                            <div class="button-box">
+                                <input style="color: aliceblue;display: none;" type="submit" id="addReviewBtn"
+                                    class="dones  btn btn-warning" value="Add review" />
+                            </div>
+
+                            <div class="submited-box">
+                                <div class="text-center spinner">
+                                    <div class="spinner-border text-secondary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div style="font-weight: 500;font-size: medium;color: green;" class="success-message">
+                                    Thank you!
+                                </div>
+                                <div class="success-message">
+                                    <a class="cart-btn ml-1" data-bs-dismiss="modal" aria-label="Close">Close</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end model -->
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and
+                        innovation for a sophisticated living experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li> GK Building , Bangalore 432</li>
+                        <li>support@evolve.com</li>
+                        <li>+91 667 8822 0909</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Explore</h2>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                    Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
+
+<!-- jquery -->
+<script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/stylesheet/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/stylesheet/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/stylesheet/assets/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script lang="javaScript">// script.js
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const productContainers = document.querySelectorAll('.product-container');
+
+        productContainers.forEach(function (productContainer) {
+            const imageContainer = productContainer.querySelector('.image-container');
+            const productImage = productContainer.querySelector('.productimage');
+
+            imageContainer.addEventListener('mousemove', (e) => {
+                const boundingBox = imageContainer.getBoundingClientRect();
+                const x = (e.clientX - boundingBox.left) / boundingBox.width;
+                const y = (e.clientY - boundingBox.top) / boundingBox.height;
+
+                productImage.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+            });
+
+            imageContainer.addEventListener('mouseleave', () => {
+                productImage.style.transformOrigin = 'center';
+            });
+        });
+    });
+
+
+    //add to cart
+    $(document).ready(function () {
+        $(".add-to-cart-btn").click(function () {
+            const productId = $(this).data("product-id");
+            $.ajax({
+                type: "POST",
+                url: "/add-to-cart", // Your server route for adding items to the cart
+                data: { productId: productId },
+                success: function (data) {
+                    //$('#response-content').text(data);
+                    if (data.status == 'warning') {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Login!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                    else if (data == "outOfStock") {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: data.message,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Item Added to Cart',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+    //add to wishlist
+
+    $(document).ready(function () {
+        $(".add-to-wishlist-btn").click(function () {
+
+            const productId = $(this).data("product-id");
+            console.log(productId);
+
+            $.ajax({
+                type: "POST",
+                url: "/add-to-wishlist", // Your server route for adding items to the wishlist
+                data: { productId: productId },
+                success: function (data) {
+                    if(data.status == 'error') {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Login!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    } else if (data.status == 'fail') {
+                        Toastify({
+                            text: data.message,
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "red", // Customize the toast background color
+                        }).showToast();
+                    } else if (data.status == 'success') {
+                        Toastify({
+                            text: "Product Added to Wishlist",
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "green", // Customize the toast background color
+                        }).showToast();
+                    }
+
+                },
+                error: function (error) {
+                    Toastify({
+                        text: error.message,
+                        duration: 5000, // Display the toast for 5 seconds
+                        gravity: "top", // Position the toast at the top
+                        position: "right", // Position the toast on the right side
+                        backgroundColor: "red", // Customize the toast background color
+                    }).showToast();
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+    $(".rating-component .star").on("mouseover", function () {
+        var onStar = parseInt($(this).data("value"), 10); //
+        $(this).parent().children("i.star").each(function (e) {
+            if (e < onStar) {
+                $(this).addClass("hover");
+            } else {
+                $(this).removeClass("hover");
+            }
+        });
+    }).on("mouseout", function () {
+        $(this).parent().children("i.star").each(function (e) {
+            $(this).removeClass("hover");
+        });
+    });
+
+    $(".rating-component .stars-box .star").on("click", function () {
+        var onStar = parseInt($(this).data("value"), 10);
+        var stars = $(this).parent().children("i.star");
+        var ratingMessage = $(this).data("message");
+        //console.log(onStar);
+        const rateValue = document.getElementById('rateValue');
+        rateValue.value = onStar;
+        var msg = "";
+        if (onStar > 1) {
+            msg = onStar;
+        } else {
+            msg = onStar;
+        }
+        $('.rating-component .starrate .ratevalue').val(msg);
+
+
+
+        $(".fa-smile-wink").show();
+
+        $(".button-box .dones").show();
+
+        if (onStar === 5) {
+            $(".button-box .done").removeAttr("disabled");
+        } else {
+            $(".button-box .done").attr("disabled", "true");
+        }
+
+        for (i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass("selected");
+        }
+
+        for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass("selected");
+        }
+
+        $(".status-msg .rating_msg").val(ratingMessage);
+        $(".status-msg").html(ratingMessage);
+        $("[data-tag-set]").hide();
+        $("[data-tag-set=" + onStar + "]").show();
+
+
+    });
+    //add review
+    const addReviewBtn = document.getElementById('addReviewBtn');
+    addReviewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productName = document.getElementById('productName').value
+        const review = document.getElementById('reviewArea').value
+        const onStar = document.getElementById('rateValue').value
+        const data = {
+            product: productName,
+            rating: onStar,
+            review: review
+        }
+        const isvalid = textValidate();
+        if (isvalid) {
+            $(".rating-component").hide();
+            $(".feedback-tags").hide();
+            $(".button-box").hide();
+            $(".submited-box").show();
+            $(".submited-box .loader").show();
+            console.log(data)
+            setTimeout(() => {
+                $.ajax({
+                    method: 'POST',
+                    url: '/add_review',
+                    data: data,
+                    success: (data) => {
+                        if (data.status == 'success') {
+                            $(".submited-box .spinner").hide();
+                            $(".submited-box .success-message").show();
+                            setTimeout(() => {
+                                location.reload()
+                            }, 2000)
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'An error Occured',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    },
+                    error: () => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error Occured',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                })
+            }, 1500)
+        }
+    })
+
+    $(".compliment-container .fa-smile-wink").on("click", function () {
+        $(this).fadeOut("slow", function () {
+            $(".list-of-compliment").fadeIn();
+        });
+    });
+
+    function textValidate() {
+        const reviewArea = document.getElementById('reviewArea');
+        if (reviewArea.value.trim() == '') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Please write your review',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            return false
+        }
+        return true
+    }
+
+</script>

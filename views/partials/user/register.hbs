@@ -1,0 +1,76 @@
+<head>
+    <link rel="stylesheet" href="/stylesheet/register.css">
+</head>
+<div class="container-fluid" id="image">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6" style="">
+            {{#if useralreadyexist}}
+            <div id="alertt" class="shadow w-50 p-2 mt-3" role="alert">
+                <b style="font-size: small;">WARNING :</b><br>
+                <p style="font-size: smaller;">This account already exists in our records.</p>
+            </div>
+            {{/if}}
+            <h1 id="register-heading">Create your Shopping account with us</h1>
+            <div id="divpb">
+            <p id="haveaccount">Already have an account?</p>
+            <form action="/login" method="get">
+                <button type="submit" id="logbtn" class="btn btn-primary">Login Now</button>
+            </form>
+            
+            </div>
+            
+
+        </div>
+
+        <div style="" class="col-sm-12 col-md-6 col-lg-6 center-div">
+            <div id="register-div" class=" container border shadow">
+                <h3 class="mt-3 mb-3" style="color: #B88E2F; font-weight:600">Register now</h3>
+                <form action="/register" method="post" id="form" onsubmit="return validate()">
+                    <span style="font-size: 13px;" class="">Name</span> <span id="nameError"
+                        style="font-size: 13px; float:right; color:red" class="text-center"></span>
+                    <div class="  input-group flex-nowrap">
+
+                        <input style="height:45px;" type="text" class="form-control" id="name"
+                            placeholder="Enter Your Name here" name="name">
+
+                    </div>
+
+
+                    <span style="font-size: 13px; margin:0;" class="">Mobile number</span> <span id="mobileError"
+                        style="font-size: 13px; float:right; color:red" class="text-center"></span>
+                    <div class=" mb-2 input-group flex-nowrap">
+
+                        <input style="height:45px; " type="tel" class="form-control" id="mobile"
+                            placeholder="1234567890" name="mobile">
+                    </div>
+
+                    <span style="font-size: 13px;" class="">Email</span> <span id="emailError"
+                        style="font-size: 13px;;float:right; color:red" class="text-center"></span>
+                    <div class="input-group flex-nowrap pb-1 mb-1">
+
+                        <input style="height:45px; " type="email" class="form-control" id="email"
+                            aria-describedby="emailHelp" placeholder="example@gmail.com" name="email">
+                    </div>
+
+                    <span style="font-size: 13px;" class="mt-3">Password</span> <span id="passwordError"
+                        style="font-size: 13px;float:right; color:red" class="text-center"></span>
+                    <div class=" mb-2 input-group flex-nowrap">
+
+                        <input style="height:45px;" type="password" class="form-control" id="password"
+                            placeholder="Enter password here" name="password">
+                            
+                    </div>
+                    <p style="font-size: 10px;line-height: 1;" class="text-secondary">Enter atleast 8 characters and include numbers and<br> special characters</p>
+
+
+                    <div class="pt-3 mb-3">
+                        <button id="buton" style="height: 40px;" type="submit"
+                            class="btn btn-primary float-right w-100">Send OTP</button>
+                    </div>
+                    {{!-- <input id="submit-btn" type="submit" value="Sign Up"> --}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javaScript/userRegister.js"></script>

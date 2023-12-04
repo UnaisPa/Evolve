@@ -1,0 +1,69 @@
+<nav id="navs" class="navbar navbar-expand-lg ">
+  <div class="container">
+    <div style="width: 34%; margin-left:20px" class=""><a id="evolve" style="font-weight:bold ;" class="navbar-brand"
+        href="#">Evolve.</a></div>
+
+    <span id="menuBar" class="navbar-toggler" type="menu" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class='bx bx-menu'></i>
+    </span>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li style="margin-right: 10%;" class="nav-item">
+          <a id="item-1" class="nav-link active text-center items-2" aria-current="page" href="/home">Home</a>
+        </li>
+        <li style="margin-right: 10%;" class="nav-item">
+          <a id="item-2" class="nav-link text-center " href="/shop">Shop</a>
+        </li>
+
+        {{#if verified}}
+        <li style="margin-right: 10%;" class="nav-item">
+          <a id="item-3" class="nav-link text-center items-2" href="/profile">Profile</a>
+        </li>
+        {{else}}
+        <li style="margin-right: 10%;" class="nav-item">
+          <a id="item-4" class="nav-link text-center items" href="/login">login</a>
+        </li>
+        {{/if}}
+
+        <li style="margin-right:10% ;" class="nav-item">
+          <a id="item-5" class="nav-link text-center items" href="/test">Contact</a>
+        </li>
+        <li style="margin-right:10% ;" class="nav-item">
+          <a id="wishlist" class="nav-link text-center items" href="#">Wishlist</a>
+        </li>
+        <li style="margin-right:10% ;" class="nav-item">
+          <a id="cart" class="nav-link text-center items" href="/cart">Cart</a>
+        </li>
+
+
+
+      </ul>
+      <form action="shop" method="get" style="margin-right:2%;">
+        <div style="" class="input-group">
+          <input id="searchBar" name="search" style="width: 130px;" class="form-control"
+            aria-describedby="button-addon2" placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+          <button style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;" class="btn "
+            type="submit" id="button-addon2"><i id="searchbtn" style="font-size: 20px;"
+              class='bx bx-search'></i></button>
+        </div>
+      </form>
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li style="margin-right: ;" class="nav-item ">
+          <a class="nav-link text-center" href="#"><i id="loveicon" style="font-size: 20px;"
+              class='bx bx-heart'></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-center" href="/cart"><i id="carticon" style="font-size: 20px;"
+              class='bx bx-cart position-relative'>{{#if cartItemsCount}}<span id="ItemCountBadge" style="width: 22px; font-size: 9px;"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{cartItemsCount}}
+                <span class="visually-hidden">unread messages</span>
+              </span>{{/if}}</i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

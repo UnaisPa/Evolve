@@ -1,0 +1,544 @@
+
+.banner-section{
+    height: 220px;
+    background-color: rgba(249, 244, 238,0.4); 
+    background-image: url(/Images/pexels-max-rahubovskiy-5997975.jpg);
+    background-size: cover;
+    
+}
+.Productsoption{
+    display: flex;
+    justify-content:space-between;
+    background-color:rgb(244, 235, 225);
+    margin-bottom: 60px;
+}
+@media screen and (max-width:500) {
+    
+    
+}
+.Productsoption select{
+    background-color:rgb(244, 235, 225); 
+   border: 1px solid black;
+}
+.dropbtn{
+    border: 1px solid black;
+}
+.dropbtn:hover{
+    border: 1px solid black;
+}
+
+.product-card {
+    width: 240px;
+    height: 378px;
+    position: relative;
+    box-shadow: 0 2px 7px #dfdfdf;
+    margin: 50px auto;
+      transition: transform 0.4s;
+    background: #fafafa;
+}
+.product-card a{
+    text-decoration: none;
+}
+.product-card img{
+    transition: transform 0.4s;
+}
+.product-card img:hover {
+    
+    transform: scale(1.1); /* Match the scale factor from the container */
+}
+
+.badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 7px;
+    z-index: 1;
+    
+}
+
+.product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 10px;
+    background: white;
+}
+
+.product-tumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-details {
+    padding: 10px;
+}
+
+.product-catagory {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.product-details h6 a {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #363636;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.product-details h4 a:hover {
+    color: #B88E2F;
+}
+
+.product-details p a{
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    margin-bottom: 10px;
+    color: #B88E2F;
+}
+
+.product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.product-bottom-details div {
+    float: left;
+    width: 50%;
+}
+
+.product-price {
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+}
+
+.product-price small {
+    font-size: 80%;
+    font-weight: 400;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.product-links {
+    text-align: end;
+}
+
+.product-links a {
+    display: inline-block;
+    margin-left: 5px;
+    color: #e1e1e1;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.product-links a:hover {
+    color: #fbb72c;
+}
+
+.bx-cart,.bx-heart{
+    color: #4b4b4b;
+    font-size: 20px;
+}
+.bx-heart{
+    transition: transform 0.4s;
+}
+.bx-heart:hover{
+    color: #fbb72c;
+    transform: scale(1.1); /* Match the scale factor from the container */
+}
+.bx-cart{
+   
+    transition: transform 0.4s;
+}
+
+.bxs-heart{
+    color:rgb(225, 176, 128);
+    font-size:20px;
+    transition: transform 0.4s;
+}
+.bxs-heart:hover{
+    color:rgb(180, 138, 97);
+    transform: scale(1.1);
+}
+.bx-cart:hover{
+    color: #fbb72c;
+    transform: scale(1.1); /* Match the scale factor from the container */
+}
+.cartbtn{
+    font-weight: 500;
+    transition: transform 0.4s;
+    color: black;
+    font-size: x-small;
+    border:1px solid #5f5f5f;
+}
+.cartbtn:hover{
+    border-color:1px solid #B88E2F;
+    background-color: #B88E2F;
+    color: white;
+  
+}
+/*  Finished CSS for cards */
+
+
+@media screen and (max-width:420px){
+    .product-card{
+        width: 150px;
+        height: 246px;
+        margin: 10px 8px;
+    }
+    .product-tumb {
+        height: 100px;
+        padding: 10px;
+        
+    }
+    .product-details {
+        padding: 3px;
+    }
+    .product-catagory {
+      
+        font-size: 7px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #ccc;
+        margin-bottom: 3px;
+    }
+    .product-details p a{
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 3px;
+        
+        
+        
+        
+    }
+    
+    .cards{
+        display: flex;
+        justify-content: center;
+        /* padding-left: 54px; */
+    }
+    .badge {
+      
+        top: 10px;
+        text-transform: uppercase;
+        font-size: 7px;
+        font-weight: 500;
+        background: red;
+        color: #fff;
+        padding: 3px 5px;
+    }
+    .product-bottom-details {
+      
+        padding-top: 0px;
+    }
+    .cartbtn{
+        width: 55px;
+        font-size: 5px;
+        height: 24px;
+    }
+    .product-price small{
+        margin-top: 10px;
+        font-size: 13px;
+        color: black;
+        
+    }
+    .product-price h4{
+        font-size: 17px
+    }
+    
+}
+
+.feature-div{
+    margin-top: 150px;
+    background-color:rgb(244, 235, 225);
+}
+@media screen and (max-width:600px) {
+    .feature-div{
+        display: none;
+    }
+}
+
+/*alert*/
+/* wishlist add*/
+.modal#statusWishlistModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusWishlistModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusWishlistModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusWishlistModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusWishlistModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusWishlistModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+
+/* wishlist remove*/
+
+.modal#statusWishlistRemoveModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusWishlistRemoveModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusWishlistRemoveModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusWishlistRemoveModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusWishlistRemoveModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusWishlistRemoveModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+/* cart add*/
+
+
+.modal#statusSuccessModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusSuccessModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusSuccessModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusSuccessModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusSuccessModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusSuccessModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+/*cart remove*/
+.modal#statusCartRemoveModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusCartRemoveModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusCartRemoveModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusCartRemoveModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusCartRemoveModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusCartRemoveModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+
+
+
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100%{
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash-check { 
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+@keyframes dash-check {
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+.box00{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+
+/*dialog*/
+
+
+:root {
+	--vs-primary: 29 92 255;
+}
+
+/*Dialog Styles*/
+dialog {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+	padding: 1rem 3rem;
+	background: white;
+	max-width: 400px;
+	padding-top: 2rem;
+	border-radius: 20px;
+	border: 0;
+	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+	animation: fadeIn 0.5s ease both;
+	&::backdrop {
+		animation: fadeIn 1s ease both;
+		background: rgba(150, 150, 150, 0.4);
+		z-index: 2;
+		/* backdrop-filter: blur(20px); */
+	}
+	.x {
+		filter: grayscale(1);
+		border: none;
+		background: none;
+		position: absolute;
+		top: 15px;
+		right: 10px;
+		transition: ease filter, transform 0.3s;
+		cursor: pointer;
+		transform-origin: center;
+		&:hover {
+			filter: grayscale(0);
+			transform: scale(1.1);
+		}
+	}
+	h2 {
+		font-weight: 600;
+		font-size: 2rem;
+		padding-bottom: 1rem;
+	}
+	p {
+		font-size: 1rem;
+		line-height: 1.3rem;
+		padding: 0.5rem 0;
+		a {
+			&:visited {
+				color: rgb(var(--vs-primary));
+			}
+		}
+	}
+}
+
+.explorebtn{
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    margin-top: 9px;
+    font-size: small;
+    margin-right: 10px;
+}
+.explorebtn:hover{
+    background-color: #363636;
+    color: #fff;
+}

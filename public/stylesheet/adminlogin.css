@@ -1,0 +1,56 @@
+#login-div{
+    width: 350px;
+    margin-top: 13vh;
+    border-radius: 15px;
+    position: top 3px;
+    transition: top 3.4s;
+}
+#buton{
+    background-color: #B88E2F ;
+    border-style: none;
+   
+}
+
+#buton:hover{
+    background-color: #987524;
+}
+#itemm{
+    display: flex;
+    justify-content: space-between;
+}
+#alertedd{
+    border-radius: 10px;
+    color: #ffffff;
+    background:-webkit-linear-gradient(45deg,red,rgb(255, 101, 101));
+    margin-left: 9%;
+    position: relative;
+    transition: top 2s;
+    opacity: 0;
+    animation: moveDownAndUp 5s ease-in-out forwards;
+}
+@keyframes moveDownAndUp {
+    0% {
+        top: 0;
+        opacity: 0; /* Start position and invisible */
+    }
+    30% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    50% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    60% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    80% {
+        top: 20px; /* Hold for 3 seconds */
+        opacity: 1; /* Stay visible */
+    }
+    100% {
+        top: 0; /* Return to the top */
+        opacity: 0; /* Invisible again */
+    }
+}

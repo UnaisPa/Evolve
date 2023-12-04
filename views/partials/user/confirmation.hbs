@@ -1,0 +1,373 @@
+<style>
+    .banner-section {
+        height: 120px;
+        /* background-color: rgb(249, 244, 238); */
+        background-image: url(/Images/pexels-max-rahubovskiy-5997975.jpg);
+        background-size: cover;
+    }
+
+    .confirmSec {
+        margin-top: 80px;
+    }
+
+    .payDiv {
+        margin-top: 40px;
+    }
+
+    .payDiv h1 {
+        font-weight: bold;
+    }
+
+    .payDiv p {
+        font-weight: 500;
+    }
+
+    #top-div {
+        width: 100%;
+        height: 100px;
+        background-color: #000000;
+        display: flex;
+    }
+
+    #top-div p {
+        margin-top: 13px;
+        margin-bottom: auto;
+        margin-left: 8%;
+        font-size: small;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-right: 3px;
+    }
+
+    #top-div i {
+        margin-left: 8%;
+    }
+
+    .detailDiv {
+        display: flex;
+        justify-content: center;
+        padding-left: 10px;
+    }
+
+    .shipAddress {
+        border: 1px solid rgb(160, 158, 158);
+        border-radius: 10px;
+    }
+</style>
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/home">
+                            <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                            {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            {{#if verified}}<li class="current-list-item"><a href="/profile">Profile</a></li>
+                            {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
+                            {{!-- <li><a href="shop.html">Shop</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                </ul>
+                            </li> --}}
+
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                    <a>
+                                        <form action="/shop" method="get" style="margin-right:2%;">
+                                            <div style="" class="input-group">
+                                                <input id="searchBar" name="search" style="width: 130px;height: 40px;"
+                                                    class="form-control" aria-describedby="button-addon2"
+                                                    placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+                                                <button
+                                                    style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                    class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                        style="font-size: 20px;" class='bx bx-search'></i></button>
+                                            </div>
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+<section>
+    <div id="top-div" class="border-top">
+        <i style="font-size: 17px; margin-top:15px;" class='bx bx-chevrons-right'></i>
+        <p style="margin-left: 3px;"></p>
+    </div>
+</section>
+<section class="container  confirmSec">
+    <div class="row">
+        <div class="col-md-7  p-4 payDiv" style="height: 50vh;">
+            <h1>Order Successful</h1>
+            <span>Your order is confirmed</span><br>
+            <span class="text-secondary">Dear {{username}},
+
+                Thank you for choosing Evolve. Your order has been successfully placed. Below, you will
+                find the details of your order:</span>
+
+
+        </div>
+        <div class="col-md-5 " style="height: 50vh;">
+            <div class="text-center">
+                <img style="width: 280px;" class="img-fluid" src="/Images/3226836.jpg">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container mt-3 mb-5">
+    <div class="header-sec text-center">
+        <h3>Order Details</h3>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4 shipAddress">
+            <h6 class="text-center mt-3">Order Info</h6>
+            <div>
+                <div class="detailDiv text-secondary">
+                    <div class=" col-6" style="float: right;">
+                        <span>Order Number </span><br>
+                        <span>Date </span><br>
+                        <span>Discount </span><br>
+                        <span>Total </span><br>
+                        <span>Order Status</span><br>
+                        <span>Payment Method</span><br>
+                    </div>
+                    <div class=" col-6">
+                        <span>: {{#each orderDetails}}{{this.order}}{{/each}}</span><br>
+                        <span>: {{orderDate}}</span><br>
+                        <span>: Rs.{{#each orderDetails}}{{this.discount}}{{/each}}</span><br>
+                        <span>: Rs.{{#each orderDetails}}{{this.totalAmount}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.orderStatus}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.paymentMethod}}{{/each}}</span><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4  shipAddress">
+            <h6 class="text-center mt-3">Shipping Address</h6>
+            <div>
+                <div class="detailDiv  text-secondary">
+                    <div class=" col-6" style="float: right;">
+                        <span>Name</span><br>
+                        <span>Mobile </span><br>
+                        <span>City </span><br>
+                        <span>Pincode</span><br>
+                        <span>District</span><br>
+                        <span>State</span><br>
+                        <span>Address</span><br>
+                    </div>
+                    <div class=" col-6">
+                        <span>: {{#each orderDetails}}{{this.address.name}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.address.mobile}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.address.city}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.address.pincode}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.address.district}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.address.state}}{{/each}}</span><br>
+                        <span>: {{#each orderDetails}}{{this.address.address}}{{/each}}</span><br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 shipAddress">
+            <h6 class="text-center mt-3">Ordered Products</h6>
+            <div class="text-secondary">
+                <table class="table table-borderless ">
+                    <thead>
+                        <tr>
+                            <td>Products</td>
+                            <td>Qty</td>
+                            <td>Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each products}}
+                        <tr>
+                            <td>{{this.productId.name}}</td>
+                            <td>{{this.quantity}}</td>
+                            <td>{{this.total}}</td>
+                        </tr>
+
+                        {{/each}}
+                        <tr>
+                            <td>Discount</td>
+                            <td>₹{{#each orderDetails}}{{this.discount}}{{/each}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex m-2">
+                    <h5 class="mx-2">Total : </h5>
+                    <h5>₹ {{#each orderDetails}}{{totalAmount}}{{/each}} Rs</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <a href="/invoice/{{#each orderDetails}}{{this._id}}{{/each}}" class="btn btn-info"
+            style="color: white;">DOWNLOAD INVOICE</a>
+        <a href="/home" class="btn btn-success" style="color: white;">BACK HOME</a>
+    </div>
+</section>
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and
+                        innovation for a sophisticated living experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li> GK Building , Bangalore 432</li>
+                        <li>support@evolve.com</li>
+                        <li>+91 667 8822 0909</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Explore</h2>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                    Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
+
+<!-- jquery -->
+<script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/stylesheet/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/stylesheet/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/stylesheet/assets/js/main.js"></script>

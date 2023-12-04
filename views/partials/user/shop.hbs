@@ -1,0 +1,566 @@
+<link rel="stylesheet" href="/stylesheet/shop.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/home">
+                            <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                            {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li class="current-list-item"><a href="/shop">Shop</a></li>
+                            {{#if verified}}<li><a href="/profile">Profile</a></li>
+                            {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
+                            {{!-- <li><a href="shop.html">Shop</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                </ul>
+                            </li> --}}
+
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                    <a>
+                                        <form action="/shop" method="get" style="margin-right:2%;">
+                                            <div style="" class="input-group">
+                                                <input id="searchBar" name="search" style="width: 130px;height: 40px;"
+                                                    class="form-control" aria-describedby="button-addon2"
+                                                    placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+                                                <button
+                                                    style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                    class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                        style="font-size: 20px;" class='bx bx-search'></i></button>
+                                            </div>
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <form action="shop">
+                            <input name="search" type="search" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+
+{{!-- <section class="banner-section border-top border-bottom">
+    <div class="text-center">
+        <h2 style="padding-top:100px;">Shop</h2>
+    </div>
+</section> --}}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+
+                    <h1 style="font-weight: 700;">Shop</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+{{!-- Succes model for add to cart --}}
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3">Item successfully added to your cart.</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusSuccessModal" id="successModalButton">Success Modal</button>
+{{!-- success model end --}}
+{{!-- cart remove moedel --}}
+<div class="modal fade" id="statusCartRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle-fill"></i>
+                <h5 class="text mt-3" style="color: rgb(150, 121, 83);">The product has already been added to your Cart.
+                </h5>
+
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                <form action="/cart"><button type="submit" class="btn btn-sm mt-3 btn border"
+                        data-bs-dismiss="modal">Check Cart</button></form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusCartRemoveModal" id="successCartRemoveButton">Success Modal</button>
+{{!-- cart remove model end --}}
+{{!-- wishlist moedel --}}
+<div class="modal fade" id="statusWishlistModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3">Item successfully added to your Wishlist.</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistModal" id="successWishlistButton">Success Modal</button>
+{{!-- model end --}}
+
+{{!-- wishlist remove moedel --}}
+<div class="modal fade" id="statusWishlistRemoveModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i style="font-size: 50px; color:tan" class="bi bi-exclamation-circle"></i>
+                <h5 class="text mt-3" style="color: rgb(150, 121, 83);">The product has already been added to your
+                    wishlist.</h5>
+
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                <button type="button" style="font-weight: 500;" class="btn btn-sm mt-3 btn border"
+                    data-bs-dismiss="modal">Check Wishlist</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusWishlistRemoveModal" id="successWishlistRemoveButton">Success Modal</button>
+{{!-- wishlist remove model end --}}
+
+<dialog id="dialog">
+    <h3>Login Required !</h3>
+    <p>Please log in to add products to your cart. Create an account if you don't have one yet.</p>
+    <form action="/login" method="get"><button class="btn btn explorebtn">Login</button></form>
+    <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+</dialog>
+<button id="dialogBtn" onclick="window.dialog.showModal();" style="display: none;"></button>
+
+
+
+<section class="container-fluid">
+    <div class="Productsoption row p-3 d-flex justify-content-end">
+        <div style="width: 200px;height: 40px;" class="dropdown-center  mx-4">
+            <button class="btn dropbtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                    class='bx bxs-category-alt'></i>
+                Browse Categories
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/shop?category=Allcategories">All Categories</a></li>
+                {{#each categoriesData}}<li><a class="dropdown-item"
+                        href="/shop?category={{this.name}}">{{this.name}}</a></li> {{/each}}
+                {{!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+            </ul>
+        </div>
+        <div style="width: 200px;height: 40px;" class="dropdown-center mx-4">
+            <button class="btn dropbtn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                    class='bx bx-filter'></i>
+                Product Filters
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item disabled" aria-disabled="true">Price</a></li>
+                <li><a class="dropdown-item" {{#if category}} href="/shop?filter=L2H&category={{category}}"
+                        {{else}}href="/shop?filter=L2H" {{/if}}>Low To High</a></li>
+                <li><a class="dropdown-item" {{#if category}} href="/shop?filter=H2L&category={{category}}"
+                        {{else}}href="/shop?filter=H2L" {{/if}}>High To Low</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="container" id="home-content">
+        <div>
+
+        </div>
+        <div class="row cards">
+            {{#each getAllProducts}}
+            <div style="margin: auto;" class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="single-product-item">
+                    {{#if this.badge}}<div class="badge">{{badge}}</div>{{/if}}
+                    {{#if this.image}}
+                    <div class="product-image">
+                        <a href="/product_details/{{this._id}}"><img src="/productimages/{{this.image.[0]}}" alt=""></a>
+                    </div>
+                    {{/if}}
+                    <h3>{{this.name}}</h3>
+                    <p class="product-price"><span>category : {{this.category}}</span><i
+                            class="bi bi-currency-rupee"></i> {{this.offerprice}} </p>
+                    <div class="d-flex px-4 justify-content-center" style="margin-left: auto;margin-right: auto;">
+                        <a class="cart-btn add-to-cart-btn" data-product-id="{{this._id}}"><i
+                                class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        <a data-product-id="{{this._id}}" class="pt-2 add-to-wishlist-btn"
+                            style="width: 40px;margin-left: 15px;padding: 3px;border-radius: 50%;"><i
+                                style="font-size: 20px;color:rgb(255, 123, 0)" class="bi bi-heart-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            </a>
+        </div>
+    </div>
+</section>
+{{#if errMsg}}
+<div class="text-center" style="margin-top: 30px;margin-bottom: 100px;">
+    <img style="width: 200px;" src="/Images/empty.png">
+    <h3>{{errMsg}}</h3>
+</div>
+{{/if}}
+<nav aria-label="Page navigation example" {{#if errMsg}}style="display:none" {{/if}}>
+    <ul class="pagination justify-content-center">
+        {{#gt totalCount 8}}<li><a class="btn page-item mx-2 px-3"
+                style="background-color:{{#if p1}} #F28123; {{else}} rgb(244, 235, 225);{{/if}} color:{{#if p1}} #fff{{else}} black{{/if}};text-decoration: none;"
+                {{#if category}}{{#if filter}} href="?page=1&category={{category}}&filter={{filter}}" {{/if}}{{/if}}
+                {{#if category}} href="?page=1&category={{category}}" {{/if}} {{#if filter}}
+                href="?page=1&filter={{filter}}" {{/if}} {{#if search}}href="?page=1&search={{search}}" {{else}}
+                href="?page=1" {{/if}}>1</a></li>{{/gt}}
+
+
+        {{#gt totalCount 8}}<li><a class="btn page-item mx-2 px-3"
+                style="background-color:{{#if p2}} #F28123 ;{{else}} rgb(244, 235, 225); {{/if}} color:{{#if p2}} #fff{{else}} black{{/if}};text-decoration: none;"
+                {{#if category}}{{#if filter}} href="?page=2&category={{category}}&filter={{filter}}" {{/if}}{{/if}}
+                {{#if category}} href="?page=2&category={{category}}" {{/if}} {{#if filter}}
+                href="?page=2&filter={{filter}}" {{/if}} {{#if search}}href="?page=2&search={{search}}" {{else}}
+                href="?page=2" {{/if}}>2</a></li>{{/gt}}
+
+
+        {{#gt totalCount 16}}<li><a class="btn page-item mx-2 px-3"
+                style="background-color:{{#if p3}} #F28123; {{else}} rgb(244, 235, 225); {{/if}}color:{{#if p3}} #fff{{else}} black{{/if}};text-decoration: none;"
+                {{#if category}}{{#if filter}} href="?page=3&category={{category}}&filter={{filter}}" {{/if}}{{/if}}
+                {{#if category}} href="?page=3&category={{category}}" {{/if}} {{#if filter}}
+                href="?page=3&filter={{filter}}" {{/if}} {{#if search}}href="?page=3&search={{search}}"
+                {{else}}href="?page=3" {{/if}}>3</a></li>{{/gt}}
+    </ul>
+</nav>
+<div class="feature-div">
+    <div class="container ">
+        <div class=" row">
+            <div class="col-3 pt-2">
+                <div class="d-flex ">
+                    <i style="font-size: 50px;" class="bi bi-trophy pt-1"></i>
+                    <div class=" pt-3 px-2">
+                        <h5 style="font-weight: 600;">High Quality</h5>
+                        <p style="font-size: smaller;opacity: 60%;">crafted from top materials</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 pt-2">
+                <div class="d-flex  px-3">
+                    <i style="font-size: 50px;" class="bi bi-patch-check"></i>
+                    <div class=" pt-2 px-2">
+                        <h5 style="font-weight: 600;">Warranty Protection</h5>
+                        <p style="font-size: smaller;opacity: 60%;">Over 2 years</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 pt-2">
+                <div class="d-flex  px-3">
+                    <i aria-colcount="pt-1" style="font-size: 50px;" class="bi bi-truck"></i>
+                    <div class=" pt-3 px-2">
+                        <h5 style="font-weight: 600;">Free Shipping</h5>
+                        <p style="font-size: smaller;opacity: 60%;">Order over ₹499</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 pt-3">
+                <div class="d-flex  px-3">
+                    <i style="font-size: 50px;" class='bx bx-support'></i>
+                    <div class=" pt-2 px-2">
+                        <h5 style="font-weight: 600;">24/7 Support</h5>
+                        <p style="font-size: smaller;opacity: 60%;">Dedicated support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and
+                        innovation for a sophisticated living experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li> GK Building , Bangalore 432</li>
+                        <li>support@evolve.com</li>
+                        <li>+91 667 8822 0909</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Explore</h2>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                    Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
+
+<!-- jquery -->
+<script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/stylesheet/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/stylesheet/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/stylesheet/assets/js/main.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script lang="javaScript">
+
+
+    //add to cart
+    $(document).ready(function () {
+        $(".add-to-cart-btn").click(function () {
+            const productId = $(this).data("product-id");
+            $.ajax({
+                type: "POST",
+                url: "/add-to-cart", // Your server route for adding items to the cart
+                data: { productId: productId },
+                success: function (data) {
+                    //$('#response-content').text(data);
+                    if (data.status == 'warning') {
+                        const dialogBTn = document.getElementById('dialogBtn');
+                        dialogBTn.click();
+                    }
+                    else if (data == "outOfStock") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: data.message,
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Item Added to Cart',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+    //add to wishlist
+
+    $(document).ready(function () {
+        $(".add-to-wishlist-btn").click(function () {
+
+            const productId = $(this).data("product-id");
+
+            $.ajax({
+                type: "POST",
+                url: "/add-to-wishlist", // Your server route for adding items to the wishlist
+                data: { productId: productId },
+                success: function (data) {
+                    if (data.status == 'fail') {
+                        Toastify({
+                            text: data.message,
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "red", // Customize the toast background color
+                        }).showToast();
+                    }else if (data.status == 'error') {
+                        Toastify({
+                            text: data.message,
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "red", // Customize the toast background color
+                        }).showToast();
+                    } else if (data.status == 'success') {
+                        Toastify({
+                            text: "Product Added to Wishlist",
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "green", // Customize the toast background color
+                        }).showToast();
+                    }
+
+                },
+                error: function (error) {
+                    Toastify({
+                        text: error.message,
+                        duration: 5000, // Display the toast for 5 seconds
+                        gravity: "top", // Position the toast at the top
+                        position: "right", // Position the toast on the right side
+                        backgroundColor: "red", // Customize the toast background color
+                    }).showToast();
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+
+
+</script>

@@ -1,0 +1,26 @@
+<div class="modal fade" id="statusWarningModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+       
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <div>
+                        <i style="font-size: 70px;" class="bi bi-person-fill-slash"></i>
+                    </div>
+                    <h3 class="text-da mt-3 mb-2">Your Account Has Been Blocked</h3>
+                    <p style="font-size: smaller;"> Dear {{name}},<br>We regret to inform you that your account has been blocked due to a violation of our terms of service and community guidelines. This action was taken to maintain the safety and integrity of our platform for all users.</p>
+                </div>
+            </div>
+        </div>
+</div>
+ <button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+            data-bs-target="#statusWarningModal" id="warningModallButton">Success Modal</button>
+
+<script lang="javaScript">
+ document.addEventListener('DOMContentLoaded', function () {
+    // Select the button by its id
+    const successModalButton = document.getElementById('warningModallButton');
+    // Trigger a click event on the button
+    successModalButton.click();
+    });
+</script>

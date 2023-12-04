@@ -1,0 +1,321 @@
+<style>
+    .boox {
+        transition: box-shadow 0.3s;
+        margin-left: auto;
+        margin-right: auto;
+        /* Add a smooth transition effect */
+
+        /* Default state shadow */
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.0);
+    }
+
+    .boox:hover {
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3);
+    }
+        .badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 7px;
+    z-index: 1;
+}
+</style>
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+
+ <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
+    <!-- header -->
+    <div class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">
+                        <!-- logo -->
+                        <div class="site-logo">
+                            <a href="/home">
+                                <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                                {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                            </a>
+                        </div>
+                        <!-- logo -->
+
+                        <!-- menu start -->
+                        <nav class="main-menu">
+                            <ul>
+                                <li ><a href="/home">Home</a></li>
+                                <li ><a href="/shop">Shop</a></li>
+                                {{#if verified}}<li class="current-list-item"><a href="/profile">Profile</a></li>
+                                {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/wishlist">Wishlist</a></li>
+                                {{!-- <li><a href="shop.html">Shop</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                        <li><a href="single-product.html">Single Product</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                    </ul>
+                                </li> --}}
+
+                                <li>
+                                    <div class="header-icons">
+                                        <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                        <a>
+                                            <form action="/shop" method="get" style="margin-right:2%;">
+                                                <div style="" class="input-group">
+                                                    <input id="searchBar" name="search"
+                                                        style="width: 130px;height: 40px;" class="form-control"
+                                                        aria-describedby="button-addon2" placeholder="Search" {{#if
+                                                        search}} value="{{search}}" {{/if}}>
+                                                    <button
+                                                        style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                        class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                            style="font-size: 20px;" class='bx bx-search'></i></button>
+                                                </div>
+                                            </form>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="mobile-menu"></div>
+                        <!-- menu end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <!-- search area -->
+    <div class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                    <div class="search-bar">
+                        <div class="search-bar-tablecell">
+                            <h3>Search For:</h3>
+                            <input type="text" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search area -->
+
+{{!-- <section class="banner-section border-top border-bottom">
+    <div class="text-center">
+        <h2 style="padding-top:100px;">Shop</h2>
+    </div>
+</section> --}}
+<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						
+						<h1 style="font-weight: 700;">Order History</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+<section class="container mt-5 mb-5">
+    <div class="row">
+        {{#each orderDetails}} 
+        <div class="col-md-4 mx-auto boox border" style="padding-bottom: 30px;">
+            {{#eq this.returnOrderStatus "request approved"}}<div class="badge" style="background-color: red;">Returned;</div>
+            {{/eq}}
+            {{#eq this.returnOrderStatus "requested"}}<div class="badge" style="background-color: red;">Return {{this.returnOrderStatus}}</div>{{else}} 
+            {{#eq this.orderStatus "Delivered"}}<div class="badge" style="background-color: green;">Deleivered</div>{{/eq}}
+            {{#eq this.orderStatus "Cancelled"}}<div class="badge" >Cancelled</div>{{/eq}}
+            {{#eq this.orderStatus "Pending"}}<div class="badge" style="background-color: orange;">Pending</div>{{/eq}}
+            {{#eq this.orderStatus "Placed"}}<div class="badge" style="background-color: blue;">Placed</div>{{/eq}}{{/eq}}
+            <p class=" mt-5 mb-1"> Products :<span style="font-weight: 500;color: #F28123;">{{#each this.products}}{{this.productId.name}},<br>{{/each}}</span></p><hr>
+            <div>
+                <span>Order Number : <span style="font-weight: 600;">{{this.order}}</span> </span><br>
+                <span>Date : {{this.foramttedDate}}</span><br>
+                <span>Order Status : {{this.orderStatus}}</span><br>
+                <span>Payment Method : {{this.paymentMethod}}</span><br>
+                <span style="font-weight: 600;font-size: 20px;">Total : {{this.totalAmount}}</span><br>
+            </div>
+            <div class="text-center mt-3">
+                <a  href="/order_details?orderId={{this._id}}" class="btn cart-btn text-center">Details</a>
+            </div>
+        </div>
+        {{/each}}
+        {{#eq count 0}}
+            <div style="height: 500px;">
+            <div class="" style="margin: auto;width: 200px;">
+                <img class="img-fluid" src="/Images/page.png">
+
+            </div>
+            <div class="" style="margin: auto;width: 293px;">
+                <h3 class="text-center" style="font-weight: 500;opacity: 80%;">Your Orders not found!
+                </h3>
+                
+            </div>
+
+        </div>
+        {{/eq}}
+    </div>
+</section>
+
+
+{{!-- <section class="container mt-5">
+    <div class="">
+        <div class="d-flex text-secondary">
+            <h2 style="font-weight: 600;">Your Orders</h2>
+        </div>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Payment Method</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orderDetails}}
+                <tr>
+                    <td>{{this.order}}</td>
+                    <td>{{this.foramttedDate}}</td>
+                    <td>{{this.orderStatus}}</td>
+                    <td>{{this.paymentMethod}}</td>
+                    <td>{{this.totalAmount}}</td>
+                    <td><button class="btn border p-1"><a style="text-decoration: none;color: black;"
+                                href="/order_details?orderId={{this._id}}">Order Details</a></button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section> --}}
+    <!-- footer -->
+    <div class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box about-widget">
+                        <h2 class="widget-title">About us</h2>
+                        <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and innovation for a sophisticated living experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box get-in-touch">
+                        <h2 class="widget-title">Get in Touch</h2>
+                        <ul>
+                            <li> GK Building , Bangalore 432</li>
+                            <li>support@evolve.com</li>
+                            <li>+91 667 8822 0909</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box pages">
+                        <h2 class="widget-title">Explore</h2>
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box subscribe">
+                        <h2 class="widget-title">Subscribe</h2>
+                        <p>Subscribe to our mailing list to get the latest updates.</p>
+                        <form action="">
+                            <input type="email" placeholder="Email">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+
+    <!-- copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                        Reserved.</p>
+                </div>
+                <div class="col-lg-6 text-right col-md-12">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end copyright -->
+
+    <!-- jquery -->
+    <script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- count down -->
+    <script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+    <!-- isotope -->
+    <script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+    <!-- waypoints -->
+    <script src="/stylesheet/assets/js/waypoints.js"></script>
+    <!-- owl carousel -->
+    <script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+    <!-- magnific popup -->
+    <script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- mean menu -->
+    <script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+    <!-- sticker js -->
+    <script src="/stylesheet/assets/js/sticker.js"></script>
+    <!-- main js -->
+    <script src="/stylesheet/assets/js/main.js"></script>

@@ -1,0 +1,431 @@
+<link rel="stylesheet" href="/stylesheet/shop.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/home">
+                            <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                            {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            {{#if verified}}<li><a href="/profile">Profile</a></li>
+                            {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                            <li class="current-list-item"><a href="/contact">Contact</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                    <a>
+                                        <form action="/shop" method="get" style="margin-right:2%;">
+                                            <div style="" class="input-group">
+                                                <input id="searchBar" name="search" style="width: 130px;height: 40px;"
+                                                    class="form-control" aria-describedby="button-addon2"
+                                                    placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+                                                <button
+                                                    style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                    class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                        style="font-size: 20px;" class='bx bx-search'></i></button>
+                                            </div>
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <form action="shop">
+                            <input name="search" type="search" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+
+{{!-- <section class="banner-section border-top border-bottom">
+    <div class="text-center">
+        <h2 style="padding-top:100px;">Shop</h2>
+    </div>
+</section> --}}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+
+                    <h1 style="font-weight: 700;">Contact</h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+<section class="container" style="font-family: 'Poppins', sans-serif; ;">
+    <div class="" style="margin-top: 10%;margin-bottom: 10%;">
+        <div style="margin-left: auto;margin-right: auto;" class="w-50">
+            <h4 style="line-height: 4px;opacity: 90%;" class="text-center">Get in touch with us</h4>
+            <h6 style="font-weight: 500; font-size: 13px;opacity: 60%;" class="text-center">For more Information about
+                out Prodcut & Services. Please feel free to Drop us an Email. Our staff always be there to help you out.
+                Do not hesitate.
+            </h6>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 10%;">
+        <div class="col-md-6 col-sm-12 ">
+            <div class="w-50 " style="margin-left: auto;margin-right: auto;">
+                <div class="d-flex ">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <div class="mx-1">
+                        <b style="font-weight: 600;">Adderess</b>
+                        <p style="line-height: 17px;font-size: 12px;font-family: 'Poppins', sans-serif;opacity: 90%;">Gk
+                            Building,<br>25th Avenue<br>Bangalore 432</p>
+                    </div>
+                </div>
+                <div class="d-flex mt-5">
+                    <i class="bi bi-telephone-fill"></i>
+                    <div class="mx-1">
+                        <b style="font-weight: 600;">Phone</b>
+                        <p style="line-height: 17px;font-size: 12px;font-family: 'Poppins', sans-serif;opacity: 90%;">
+                            Mobile : +91 667 8822 0909<br> Mobile2 : +93 234 3222 323</p>
+                    </div>
+                </div>
+                <div class="d-flex mt-5">
+                    <i class="bi bi-clock-fill"></i>
+                    <div class="mx-1">
+                        <b style="font-weight: 600;">Working Time</b>
+                        <p style="line-height: 17px;font-size: 12px;font-family: 'Poppins', sans-serif;opacity: 90%;">
+                            Monday - Friday:9:00 - 5:00,
+                            Saturday - Sunday:10:00 - 3:30,
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 ">
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your Name</label>
+                <input style="height: 40px;" type="text" class="form-control" id="name"
+                    placeholder="Enter your full Name">
+                <small style="color: red;opacity: 80%;" id="nameError"></small>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input style="height: 40px;" type="email" class="form-control" id="email"
+                    placeholder="name@example.com">
+                <small style="color: red;opacity: 80%;" id="emailError"></small>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Subject</label>
+                <input style="height: 40px;" type="text" class="form-control" id="subject"
+                    placeholder="This is optional">
+                <small style="color: red;opacity: 80%;" id="subjectError"></small>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Message</label>
+                <textarea class="form-control" placeholder="Hi,I'd like to ask about..." id="message"
+                    rows="3"></textarea>
+                <small style="color: red;opacity: 80%;" id="messageError"></small>
+            </div>
+
+            {{#if notLogin}}<button id="loginFirst" type="submit" class="btn btn-info w-25">Submit</button>{{else}}<button id="submitBtn" type="submit" class="btn btn-info w-25">Submit</button>{{/if}}
+
+
+
+        </div>
+    </div>
+</section>
+
+
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and
+                        innovation for a sophisticated living experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li> GK Building , Bangalore 432</li>
+                        <li>support@evolve.com</li>
+                        <li>+91 667 8822 0909</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Explore</h2>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                    Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
+
+<!-- jquery -->
+<script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/stylesheet/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/stylesheet/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/stylesheet/assets/js/main.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    //add to cart
+    $(document).ready(function () {
+        $("#submitBtn").click(function () {
+            const isvalid = validate()
+            if (isvalid) {
+                const email = document.getElementById('email');
+                const name = document.getElementById('name');
+                const message = document.getElementById('message');
+                const subject = document.getElementById('subject');
+
+                const data = {
+                    name: name.value,
+                    email: email.value,
+                    message: message.value,
+                    subject: subject.value
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/contact/add", // Your server route for adding items to the cart
+                    data: data,
+                    success: function (data) {
+                        //$('#response-content').text(data);
+                        if (data.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thank you!',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                    },
+                    error: function (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error Occured',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                })
+            }   
+        });
+    });
+
+   
+    function validate() {
+        const name = document.getElementById('name');
+        const nameError = document.getElementById('nameError');
+        const email = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+        const message = document.getElementById('message');
+        const messageError = document.getElementById('messageError');
+        const subject = document.getElementById('subject');
+        const subjectError = document.getElementById('subjectError');
+
+        const nameRegex = /^[a-zA-Z]/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail+\.[a-zA-Z]{3}$/;
+
+        if (name.value.trim() === '') {
+            nameError.innerHTML = 'Field is Required'
+            name.style.borderColor = 'red'
+            setTimeout(() => {
+                nameError.innerHTML = ''
+                name.style.borderColor = ''
+            }, 5000);
+            return false
+        }
+        if (!nameRegex.test(name.value)) {
+            nameError.innerHTML = 'First letter Should be Capital'
+            name.style.borderColor = 'red'
+            setTimeout(() => {
+                nameError.innerHTML = ''
+                name.style.borderColor = ''
+            }, 6000);
+            return false
+        }
+        if (email.value.trim() === '') {
+            emailError.innerHTML = 'Field is Required'
+            email.style.borderColor = 'red'
+            setTimeout(() => {
+                emailError.innerHTML = ''
+                email.style.borderColor = ''
+            }, 5000);
+            return false
+        }
+        if (!emailRegex.test(email.value)) {
+            emailError.innerHTML = 'Enter valid Email'
+            email.style.borderColor = 'red'
+            setTimeout(() => {
+                emailError.innerHTML = ''
+                email.style.borderColor = ''
+            }, 5000);
+            return false
+        }
+        if (message.value.trim() === '') {
+            messageError.innerHTML = 'Field is Required'
+            message.style.borderColor = 'red'
+            setTimeout(() => {
+                messageError.innerHTML = ''
+                message.style.borderColor = ''
+            }, 5000);
+            return false
+        }
+        if (!nameRegex.test(message.value)) {
+            messageError.innerHTML = 'Enter Proper message'
+            message.style.borderColor = 'red'
+            setTimeout(() => {
+                messageError.innerHTML = ''
+                message.style.borderColor = ''
+            }, 5000);
+            return false
+        }
+
+        if (subject.value.trim()!=='' &&!nameRegex.test(subject.value)) {
+            subjectError.innerHTML = 'Enter Proper message'
+            subject.style.borderColor = 'red'
+            setTimeout(() => {
+                subjectError.innerHTML = ''
+                subject.style.borderColor = ''
+            }, 5000);
+            return false
+        }
+        return true
+    }
+
+    document.getElementById('loginFirst').addEventListener('click',()=>{
+        Swal.fire({
+            icon:'warning',
+            title:'Please Login First'
+        })
+    })
+</script>

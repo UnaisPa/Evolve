@@ -1,0 +1,62 @@
+{{!-- <h1>verify OTP</h1>
+<form action="/verify-user" method="post">
+    <input type="hidden" name="id" placeholder="email" value={{id}}>
+    <input type="text" name="otp" placeholder="otp">
+    <button type="submit">submit</button>
+    
+</form> --}}
+<head>
+    <link rel="stylesheet" href="/stylesheet/login.css">
+</head>
+<div class="container-fluid" id="image">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6" style="">
+            {{#if otpExpired}} 
+             <div id="alerted" class="shadow w-50 p-2 mt-3" role="alert">
+                <b style="font-size: small;">MESSAGE :</b><br>
+                <p style="font-size: smaller;">OTP Expired, please press resend button</p>
+            {{/if}}
+            {{#if invalidotp}}
+                <div id="alerted" class="shadow w-50 p-2 mt-3" role="alert">
+                <b style="font-size: small;">MESSAGE :</b><br>
+                <p style="font-size: smaller;">Invalid OTP, Double check your OTP</p>
+            </div>
+            {{else}}
+                <div id="alertt" class="shadow w-50 p-2 mt-3" role="alert">
+                <b style="font-size: small;">MESSAGE :</b><br>
+                <p style="font-size: smaller;">An OTP consisting of 6 digits has been sent to your email address.</p>
+            </div>
+            {{/if}}
+
+            
+            <h1 id="verify-heading">Create your Shopping account with us</h1>
+        </div>
+        
+        <div style="" class="col-sm-12 col-md-6 col-lg-6 center-div">
+            <div id="login-div" class=" container border shadow">
+                <h3 class="mt-4 mb-4" style="color: #B88E2F; font-weight:600">Verify OTP</h3>
+                <form action="/verify-user" method="post" onsubmit="return validate()">
+                    <span class="">Enter 6 digit OTP here</span>
+                    <div class="input-group flex-nowrap pb-2 mb-2 pt-1">
+                        
+                        <input style="height:45px; " type="number" class="form-control" id="otp" aria-describedby="emailHelp" placeholder="123456" name="otp">
+                    </div>
+                    <span id="OTPError" style="font-size: 13px; float:left; color:red" class="text-center mb-1"></span><br>
+                     <input type="hidden" name="id" placeholder="email" value={{id}}>
+                    <div class="otp-container">
+                    <small id="timer"></small>
+	                    <a style="text-decoration: none; color:#B88E2F" href="/resendOTP/{{id}}"  id="resend">Resend OTP</a>
+                    <div class="pt-4 mb-3">
+                        <button id="buton" style="height: 40px;" type="submit" class="btn btn-primary float-right w-100">verify OTP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/javaScript/OTPvalidation.js">
+		
+</script>
+

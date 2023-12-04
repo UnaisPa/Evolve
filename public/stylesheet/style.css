@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;;
+}
+#hds{
+    color: #ff1717;
+    font-weight: 600;
+    
+}
+
+#searchbtn{
+    margin-top: 2px;
+}
+
+#searchbtn:hover{
+    color: #B88E2F;
+}
+#wishlist,#cart{
+    display: none;
+}
+#navs{
+    background: rgb(241, 241, 241);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+#items-1,#item-2,#item-3,#item-4,#item-5,#wishlist,#cart,#lovicon,#carticon{
+    font-weight: 500;
+}
+
+#item-1:hover,#item-2:hover,#item-3:hover,#item-4:hover,#item-5:hover,#wishlist:hover,#cart:hover,#loveicon:hover,#carticon:hover{
+    color: #B88E2F;
+}
+@media screen and (max-width:980px) {
+    #loveicon, #carticon{
+        display: none;
+    }
+    #wishlist,#cart{
+        display: block;
+       
+    }
+    #item-1:hover,#item-2:hover,#item-3:hover,#item-4:hover,#item-5:hover,#wishlist:hover,#cart:hover,#loveicon:hover,#carticon:hover{
+        border: 1px solid #B88E2F;
+        border-radius: 3px;
+    }
+    #searchBar{
+        width:90px ;
+    }
+    
+    #navs{
+        padding-left: 6%;
+    }
+}
+#menBar{
+    cursor: pointer;
+}
+#menuBar:hover{
+    background-color: #B88E2F;
+    color: white;
+}
+@keyframes smoothHoverAnimation {
+    0% {
+      color: #B88E2F;
+    }
+    100% {
+      color:#7d5b0b;
+    }
+  }
+#evolve{
+    color: #B88E2F;
+    animation-fill-mode:forwards; /* Keeps the final state of the animation */
+    animation-play-state:paused;
+}
+#evolve:hover{
+    animation-name: smoothHoverAnimation;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-play-state: running; 
+}
+#evicon{
+    border-radius: 50%;
+}
+
+

@@ -1,0 +1,429 @@
+{{!--
+<link rel="stylesheet" href="/stylesheet/adminlists(dashboard).css">
+{{>admin-header}}
+
+<div class="d-flex">
+
+    <div class="col-3 the-box border-end border-bottom border-top">
+        <p class="list-title">Home</p>
+        <div class="lists">
+            <a style="text-decoration: none; color:black" href="/admin/dashboard"><i
+                    style="margin-right: 10px; margin-left:15px;" class='bx bxs-dashboard'></i>Dashboard</a>
+            <a style="text-decoration: none; color:black" href="/admin/sales_report"><i
+                    style="margin-right: 10px; margin-left:15px;" class='bx bxs-report'></i>Sales Report</a>
+        </div>
+        <p class="list-title">Controls</p>
+        <div class="lists">
+            <a style="text-decoration: none; color:black" href="/admin/orders"><i
+                    style="margin-right: 10px; margin-left:15px;" class='bx bxs-receipt'></i>Orders</a>
+            <a style="text-decoration: none; color:black" href="/admin/category"><i
+                    style="margin-right: 10px;margin-left:15px;" class='bx bxs-category-alt'></i>Category</a>
+            <a style="text-decoration: none; color:black" href="/admin/users"><i
+                    style="margin-right: 10px;margin-left:15px;" class='bx bxs-user'></i>Users</a>
+
+        </div>
+        <p class="list-title">Editing Function</p>
+        <div class="lists">
+            <a id="currentpage" style="text-decoration: none;" href="/admin/products"><i id="bxs-item"
+                    style="margin-right: 10px;margin-left:15px;" class='bx bx-list-ul'></i>Products</a>
+            <a><i style="margin-right: 10px;margin-left:15px;" class='bx bxs-coupon'></i>Coupons</a>
+            <a><i style="margin-right: 10px;margin-left:15px;" class='bx bx-note'></i>Banners</a>
+        </div>
+    </div>
+
+    <div class="dashboard" style="width: 100%;">
+        <div class="d-flex">
+            <h3 class="m-4">Add Product</h3>
+            {{#if productadded}}
+            <div id="successalert" class="shadow p-2 mt-3 float-right" role="alert">
+                <b style="font-size: small;">MESSAGE:</b><br>
+                <p style="font-size: smaller;">Product added Successfully</p>
+            </div>
+            {{/if}}
+        </div>
+        <div class=" container p-4">
+            <div style="" class=" w-75">
+                <div class="d-flex">
+
+                    <form class="row g-3" action="/admin/products/add_products" method="POST"
+                        onsubmit="return validate()" enctype="multipart/form-data">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Product Name</label><small id="nameError"
+                                style="float: right; font-size: 13px;color:red"></small>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Enter Product Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="category" class="form-label">Category</label>
+                            <select id="category" class="form-select" name="category">
+                                {{#each category}}
+                                <option>{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="price" class="form-label">Price</label><small id="priceError"
+                                style="float: right; font-size: 13px;color:red"></small>
+                            <input type="text" class="form-control" id="price" name="price"
+                                placeholder="Enter Price here">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="offerprice" class="form-label">Offer Price</label><small id="offerpriceError"
+                                style="float: right; font-size: 10px; color:red"></small>
+                            <input type="text" class="form-control" id="offerprice" name="offerprice"
+                                placeholder="Enter Offer Price here">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="quantity" class="form-label">Quantity</label><small id="quantityError"
+                                style="float: right; font-size: 11px;color:red"></small>
+                            <input type="text" class="form-control" id="quantity" name="quantity"
+                                placeholder="Enter Qunantity here">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="description"
+                                    style="height: 100px" name="description"></textarea>
+                                <label for="description">Product Description</label><small id="descriptionError"
+                                    style="float: right; font-size: 11px;color:red"></small>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="image" class="form-label">Upload Images</label><small id="imageError"
+                                style="float: right; font-size: 11px;color:red"></small>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="image" name="images" multiple>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="badge" class="form-label">Badge(Optional)</label>
+                            <input type="text" class="form-control" id="badge" name="badge" placeholder="Product Badge">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="color" class="form-label">Color</label><small id="colorError"
+                                style="float: right; font-size: 11px;color:red"></small>
+                            <input type="text" class="form-control" id="color" name="color" placeholder="Product Color">
+                        </div>
+                        <div class="col-12">
+                            <button id="buton" type="submit" class="btn btn-primary">Add Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javaScript/addProduct.js"></script> --}}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modernize Free</title>
+    <style>
+
+    </style>
+    <link rel="shortcut icon" type="image/png" href="/admin/images/logos/favicon.png" />
+    <link rel="stylesheet" href="/admin/css/styles.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="/admin" class="text-nowrap logo-img">
+                        <h2 style="font-weight: 800;color: #28b4ff;" class="m-3">Evolve.</h2>
+                        {{!-- <img src="/admin/images/logos/dark-logo.svg" width="180" alt="" /> --}}
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/dashboard" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/sales_report" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i></i>
+                                </span>
+                                <span class="hide-menu">Sales Report</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">CONTROLS</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/orders" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-description"></i>
+                                </span>
+                                <span class="hide-menu">Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/category" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Category</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/users" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Users</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Editing Functions</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link active" href="/admin/products" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Products</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/coupons" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Coupons</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/banners" aria-expanded="false">
+                                <span>
+                                     <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Banners</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/offers" aria-expanded="false">
+                                <span>
+                                     <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">EXTRA</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/admin/deal_of_month" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-aperture"></i>
+                                </span>
+                                <span class="hide-menu">Deal Of Month</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <header class="app-header">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                                href="javascript:void(0)">
+                                <i class="ti ti-menu-2"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                                <i class="ti ti-bell-ringing"></i>
+                                <div class="notification bg-primary rounded-circle"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li>
+                                <form action="/admin/contact"><button style="border-style: none;background-color: white;" type="submit" class="" >
+                                    <img src="/admin/images/profile/user-1.jpg" alt="" width="35" height="35"
+                                        class="rounded-circle">
+                                </button></form>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!--  Header End -->
+
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold mb-4">Add Product</h5>
+                        <form class="row g-3" id="formSubmit" action="/admin/products/add_products" method="POST"
+                            onsubmit="return validate()" enctype="multipart/form-data">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Product Name</label><small id="nameError"
+                                    style="float: right; font-size: 13px;color:red"></small>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter Product Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="category" class="form-label">Category</label>
+                                <select id="category" class="form-select" name="category">
+                                    {{#each category}}
+                                    <option>{{this.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="price" class="form-label">Price</label><small id="priceError"
+                                    style="float: right; font-size: 13px;color:red"></small>
+                                <input type="text" class="form-control" id="price" name="price"
+                                    placeholder="Enter Price here">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="offerprice" class="form-label">Offer Price</label><small
+                                    id="offerpriceError" style="float: right; font-size: 10px; color:red"></small>
+                                <input type="text" class="form-control" id="offerprice" name="offerprice"
+                                    placeholder="Enter Offer Price here">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="quantity" class="form-label">Quantity</label><small id="quantityError"
+                                    style="float: right; font-size: 11px;color:red"></small>
+                                <input type="text" class="form-control" id="quantity" name="quantity"
+                                    placeholder="Enter Qunantity here">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="description"
+                                        style="height: 100px" name="description"></textarea>
+                                    <label for="description">Product Description</label><small id="descriptionError"
+                                        style="float: right; font-size: 11px;color:red"></small>
+                                </div>
+                            </div>
+                            <div class="col-12 clearFor">
+                                <label for="image" class="form-label">Upload Images</label><small id="imageError"
+                                    style="float: right; font-size: 11px;color:red"></small>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" id="image" name="images"><button
+                                        data-img-id="image" class="btn btn-info clearBtn1">Clear</button>
+                                </div>
+                            </div>
+                            <div class="col-12 clearFor">
+                                <label for="image" class="form-label"></label><small
+                                    style="float: right; font-size: 11px;color:red"></small>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" id="imag2" name="images"><button
+                                        data-img-id="imag2" class="btn btn-info clearBtn2">Clear</button>
+                                </div>
+                            </div>
+                            <div class="col-12 clearFor">
+                                <label for="image" class="form-label"> </label><small
+                                    style="float: right; font-size: 11px;color:red"></small>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" id="imag3" name="images"><button
+                                        data-img-id="imag3" class="btn btn-info clearBtn3">Clear</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="badge" class="form-label">Badge(Optional)</label>
+                                <input type="text" class="form-control" id="badge" name="badge"
+                                    placeholder="Product Badge">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="color" class="form-label">Color</label><small id="colorError"
+                                    style="float: right; font-size: 11px;color:red"></small>
+                                <input type="text" class="form-control" id="color" name="color"
+                                    placeholder="Product Color">
+                            </div>
+                            <div class="col-12">
+                                <button id="buton" type="submit" class="btn btn-primary">Add Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="hiddenInput">
+        <script src="/javaScript/addProduct.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/admin/libs/jquery/dist/jquery.min.js"></script>
+        <script src="/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/admin/js/sidebarmenu.js"></script>
+        <script src="/admin/js/app.min.js"></script>
+        <script src="/admin/libs/apexcharts/dist/apexcharts.min.js"></script>
+        <script src="/admin/libs/simplebar/dist/simplebar.js"></script>
+        <script src="/admin/js/dashboard.js"></script>
+
+        <script>
+
+            const product = '{{productadded}}'
+            if (product == true) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Product Added Successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+
+            $('.clearBtn1').click(() => {
+                //console.log('heloooo')
+                const img = $('.clearBtn1').data("img-id");
+                const imgId = document.getElementById(`${img}`);
+                imgId.value = '';
+            })
+            $('.clearBtn2').click(() => {
+                //console.log('heloooo')
+                const img = $('.clearBtn2').data("img-id");
+                const imgId = document.getElementById(`${img}`);
+                imgId.value = '';
+            })
+            $('.clearBtn3').click(() => {
+                //console.log('heloooo')
+                const img = $('.clearBtn3').data("img-id");
+                const imgId = document.getElementById(`${img}`);
+                imgId.value = '';
+            })
+
+
+        </script>
+</body>
+
+</html>

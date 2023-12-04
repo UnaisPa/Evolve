@@ -1,0 +1,161 @@
+
+
+#image{
+    background: url('/Images/wood-sideboard-living-room-interior-with-copy-space.jpg');
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    
+}
+@keyframes smoothHoverAnimation {
+    0% {
+      color: #fff;
+    }
+    100% {
+      color:#ffe790;
+    }
+  }
+
+#register-div{
+    background-color: #FFF3E3;
+    border-radius: 15px;
+    width: 350px;
+    margin-top: 13%;
+    /* backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) */
+}
+#buton{
+    background-color: #B88E2F ;
+    border-style: none;
+}
+
+#buton:hover{
+    background-color: #987524;
+}
+
+
+
+#register-heading{
+    
+    margin-top: 30%;
+    font-weight: 600;
+    font-size: 42px;
+    margin-left: 4%;
+    color: white;
+    
+    animation-fill-mode:forwards; /* Keeps the final state of the animation */
+    animation-play-state:paused;
+}
+#haveaccount{
+    color: white;
+}
+#logbtn{
+    background-color: #B88E2F ;
+    border-style: none;
+}
+
+#logbtn:hover{
+    background-color: #987524;
+}
+#divpb{
+    margin-left: 4%;
+}
+#register-heading:hover {
+    animation-name: smoothHoverAnimation;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-play-state: running; /* Resume the animation on hover */
+}
+
+@media screen and (max-width: 768px) {
+    #register-heading{
+        margin-top: 5%;
+        font-weight: 500;
+        font-size: 38px;
+        text-align: center;
+    }
+   
+    #divpb{
+
+
+        align-items: center;
+        justify-content: center; 
+    }
+    #haveaccount{
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+    #logbtn{
+        margin-left: 43%;
+        font-size: 10px;
+        
+    }
+    
+    #register-div{
+        margin-top:4% ;
+    }
+}
+@media screen and (max-width: 768px) {
+    #logbtn{
+        margin-left: 40%;
+        font-size: 10px;
+        
+    }
+}
+@media screen and (max-width: 415px) {
+    #register-heading{
+        margin-top: 15%;
+        font-weight: 500;
+        font-size: 30px;
+        text-align: center;
+    }
+    #register-div{
+        margin-top:13% ;
+    }
+    #logbtn{
+        margin-left: 36%;
+        font-size: 10px;
+        
+    }
+    
+}
+#alertt{
+    border-radius: 10px;
+    color: #fff;
+    background:-webkit-linear-gradient(45deg,#967017,#B88E2F);
+    margin-left: 9%;
+    position: relative;
+    transition: top 2s;
+    opacity: 0;
+    animation:  moveDownAndUp 5s ease-in-out forwards;
+}
+
+
+@keyframes moveDownAndUp {
+    0% {
+        top: 0;
+        opacity: 0; /* Start position and invisible */
+    }
+    30% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    50% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    60% {
+        top: 20px; /* Move down */
+        opacity: 1; /* Fade in */
+    }
+    80% {
+        top: 20px; /* Hold for 3 seconds */
+        opacity: 1; /* Stay visible */
+    }
+    100% {
+        top: 0; /* Return to the top */
+        opacity: 0; /* Invisible again */
+    }
+}

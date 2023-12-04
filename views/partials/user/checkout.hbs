@@ -1,0 +1,881 @@
+<link rel="stylesheet" href="/stylesheet/checkout.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<style>
+    @media screen and (max-width:500px) {
+
+        #couponTable td,
+        th {
+            font-size: 10px;
+        }
+
+        #couponTable .hi {
+            display: none;
+        }
+
+        #couponTable input,
+        button {}
+    }
+</style>
+
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/home">
+                            <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                            {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            {{#if verified}}<li><a href="/profile">Profile</a></li>
+                            {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
+                            {{!-- <li><a href="shop.html">Shop</a>
+                                <ul class="sub-menu">
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                </ul>
+                            </li> --}}
+
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i style="color: #F28123;"
+                                            class="fas fa-shopping-cart"></i></a>
+                                    <a>
+                                        <form action="/shop" method="get" style="margin-right:2%;">
+                                            <div style="" class="input-group">
+                                                <input id="searchBar" name="search" style="width: 130px;height: 40px;"
+                                                    class="form-control" aria-describedby="button-addon2"
+                                                    placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+                                                <button
+                                                    style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                    class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                        style="font-size: 20px;" class='bx bx-search'></i></button>
+                                            </div>
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                   
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+
+                    <h1 style="font-weight: 700;">Checkout</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+{{!-- Succes model for add to cart --}}
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10"
+                        cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round"
+                        stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+                <h4 class="text-success mt-3">Success!</h4>
+                <p class="mt-3">Order Placed successfully</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button style="display: none;" type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+    data-bs-target="#statusSuccessModal" id="successModalButton">Success Modal</button>
+<!-- Modal Add address-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: #452212;">Add Address</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="user-box mx-2">
+                    <input type="text" name="name" id="name" required="">
+                    <label>Name</label>
+                    <label class="d-flex justify-content-end" id="nameError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class=" mx-2">
+                    <input type="number" style="width: 100%;" placeholder="Mobile Number" name="mobile" id="mobile"
+                        required="">
+
+                    <label class="d-flex justify-content-end" id="mobileError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+                <div class="d-flex">
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="city" id="city" required="">
+                        <label>City</label>
+
+                        <label class="d-flex justify-content-end" id="cityError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="state" id="state" required="">
+                        <label>State</label>
+                        <label class="d-flex justify-content-end" id="stateError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="number" style="width: 100%;" placeholder="Pincode" name="pincode" id="pincode"
+                            required="">
+
+                        <label class="d-flex justify-content-end" id="pinError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                    <div class="user-box mx-2" style="width: 100%;">
+                        <input type="text" name="district" id="district" required="">
+                        <label>District</label>
+                        <label class="d-flex justify-content-end" id="districtError"
+                            style="color: red;font-size: 12px;padding-left: 110px;"></label>
+                    </div>
+                </div>
+                <div class="user-box mx-2">
+                    <input type="text" name="address" id="address" required="">
+                    <label>Address</label>
+                    <label class="d-flex justify-content-end" id="addressError"
+                        style="color: red;font-size: 12px;padding-left: 77%;"></label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Discard</button>
+                <button id="" onclick="validate()" class="btn btn-outline-dark addressSubmit">Save Address</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{!-- end add address --}}
+<section class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6  col-sm-12 pl-5 px-5">
+            <div>
+                <h3>Choose Address</h3>
+            </div>
+            <div class="mt-5">
+                {{#if noAddress}}
+                <div class="m-3" style="opacity: 70%;">
+
+                    <h5>No addresss found!</h5>
+                    <div class="d-flex">
+                        <button class="btn" style="font-weight: 600;border:1px solid black;padding-top: 10px;"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <div class="d-flex">
+                                <i class="bi bi-plus-circle"></i>
+                                <p class="px-2">Add Address</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                {{else}}
+                {{#each userAddress}}
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="address-option" id="{{this._id}}" {{#if
+                        this.is_default}}checked{{/if}}>
+                    <label class="form-check-label" for="{{this._id}}">
+                        <div>
+                            <span><span style="opacity: 70%;">Name :</span> {{this.name}}</small></br>
+                                <span><span style="opacity: 70%;">Mobile :</span> {{this.mobile}}</small></br>
+                                    <span><span style="opacity: 70%;">City :</span> {{this.city}}</span><br>
+                                    <span><span style="opacity: 70%;">Address : </span> {{this.address}}</span><br>
+                        </div>
+                    </label>
+
+                </div>
+                {{/each}}
+                <button id="" class="btn border text-secondary addressSubmit" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">+ Add New Address</button>
+                {{/if}}
+            </div>
+            {{#if coupons}}
+            <div class="mt-5  p-2 border">
+
+                <div class="d-flex">
+                    <h6>Coupons for you</h6><a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="mx-3 text-primary"><small>Details</small></a>
+                </div>
+                <ul type="none">
+                    {{#each coupons}}
+                    <li><i style="font-size: 14px;color:green" class='bx bxs-coupon mx-2'></i>
+                        {{this.description}} <span class="text-secondary">- Your will get {{discountPercentage}}%
+                            discount </span></li>
+                    {{/each}}
+                </ul>
+
+            </div>
+            <small class="text-secondary mb-5">You will get coupon code by clicking Details</small>
+            {{/if}}
+        </div>
+        {{!-- Model --}}
+        <!-- Button trigger modal -->
+        {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button> --}}
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Available Coupons</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="couponTable" class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Coupon Code</th>
+                                    <th scope="col">Min Order Amount</th>
+                                    <th>Max Discount Amount</th>
+                                    <th scope="col">Validity</th>
+                                    <th class="hi" scope="col">Description</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each coupons}}
+                                <tr>
+                                    <th scope="row" class="Btns">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" disabled
+                                                value="{{this.couponCode}}">
+                                            <button data-coupon-code="{{this.couponCode}}"
+                                                class="btn btn-success copyBtn">Copy</button>
+                                        </div>
+                                    </th>
+                                    <td>₹{{this.minOrderAmount}}</td>
+                                    <td>₹{{this.discountAmount}}</td>
+                                    <td>{{formatDate this.expiry}}</td>
+                                    <td class="hi">{{this.description}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <small style="margin-right: auto;" class="text-secondary">This coupon is a one-time offer, valid
+                            for a single order only. Make it count on your next purchase!<br>You will get discount of
+                            specified percentage on your purchase. The maximum discount amount you can enjoy is we
+                            already mentioned on top (max Discount Amount), ensuring you get the best savings possible.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- end model--}}
+
+        <div class="col-md-6  col-sm-12">
+            <div>
+                <div>
+                    <h4>Your Order</h4>
+                    <table class="table table-borderless mt-4">
+                        <thead>
+                            <tr>
+                                <td class="text-secondary" scope="col">Products</td>
+                                <td class="text-secondary" scope="col"></td>
+                                <td class="text-secondary" scope="col">Sub Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each cartDetails}}
+                            <tr>
+                                <td class="text-secondary" style="color: #452212;">{{this.productId.name}}</td>
+                                <td class="text-secondary" class="px-3">x {{this.quantity}}</td>
+                                <td class="text-secondary">Rs.{{this.total}}</td>
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+
+                    <div class="mx-2">Discount : ₹<span class="text-secondary " id="discount">{{discountVal}}{{#if
+                            applied}}<small class="mx-4 text-secondary">Coupon appllied</small>{{/if}}</span></div>
+                    <div class="d-flex my-3 text-center mx-1" style="padding-top: 20px;">
+                        <h5 class="text-secondary">Total : Rs.</h5>
+                        <h5 style="font-weight: 600;color: #B88E2F;" id="cartTotal" class="mx-1"> {{grandTotal}}</h5>
+                    </div>
+                    <input type="hidden" id="totVal" value="{{grandTotal}}">
+                    <input type="hidden" id="disVal" value="{{discountVal}}">
+                    {{#if coupons}}
+                    <div class="border mt-3" style=";border-radius: 7px; background-color:rgb(244, 235, 225);;">
+                        <label class="mt-3 mx-2" style="font-weight: 600;">Have any Coupons?</label>
+                        <div class="input-group mt-1 mb-2 mx-2 w-75 ">
+
+                            <input type="text" id="couponCode" placeholder="Enter Coupon Code" class="form-control">
+                            <button id="applyBtn" class="btn btn-info">Apply Coupon</button>
+                        </div>
+                        <label id="couponError" class="mx-2 py-2 text-danger"></label>
+                    </div>
+                    {{else}}
+                    <div aria-readonly="true" class=" mt-3"
+                        style=";border-radius: 7px; background-color:rgba(244, 235, 225,0.4);;">
+                        <label aria-disabled="true" class="mt-3 mx-2 text-secondary" style="font-weight: 600;">Have any
+                            Coupons? <small class="mx-3 text-secondary"></small></label>
+                        <div aria-readonly="true" class="input-group mt-1 mb-2 mx-2 w-75 ">
+
+                            <input disabled type="text" id="couponCode" placeholder="Enter Coupon Code"
+                                class="form-control">
+                            <button disabled id="applyBtn" class="btn btn-info">Apply Coupon</button>
+                        </div>
+                        <label id="couponError" class="mx-2 py-2 text-danger"></label>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <hr>
+            <div class="px-2 pt-3">
+                <h5>Select Payment Method</h5>
+                <div class="border" style=";border-radius: 7px; background-color:rgb(244, 235, 225);;">
+                    <div class="form-check" style="margin-top: 30px;margin-left: 30px;">
+                        <input class="form-check-input" type="radio" name="payment-method" id="COD" value="option1"
+                            checked>
+                        <label class="form-check-label d-flex" for="COD">
+                            <div class="" style="height: 40px;width:60px">
+                                <img class="img-flui" style="width: 40px;" src="/Images/cod.png">
+                            </div>
+                            <p class="my-2 mx-0"
+                                style="font-weight: 700;font-size: 17px;font-family: 'Poppins', sans-serif;">Cash on
+                                Delivery</p>
+                        </label>
+                        <p style="line-height: 14px;font-size: 11px;font-family: 'Poppins', sans-serif;"
+                            class="text-secondary mb-4">At Evolve, we understand the importance of a seamless and
+                            trustworthy shopping experience. That's why we offer Cash on Delivery, a payment method
+                            designed with your convenience in mind</p>
+                        <hr class="shadow">
+                    </div>
+                    
+                    {{!-- Razorpay option --}}
+                    <div class="form-check" style="margin-top: 30px;margin-left: 30px;">
+                        <input class="form-check-input" type="radio" name="payment-method" id="Razorpay" value="option1"
+                            >
+                        <label class="form-check-label d-flex" for="Razorpay">
+                            <div class="" style="height: 40px;width:160px">
+                                <img class="img-flui" style="width: 150px;" src="/Images/razorpay-icon.webp">
+                            </div>
+                            <p class="my-1 mx-3" style="font-weight: 500;"></p>
+                        </label>
+                        <small class="text-secondary mb-4">Razorpay, our trusted online payment partner</small>
+                        <hr>
+                    </div>
+                    {{!-- Wallet option --}}
+                    <div class="form-check" style="margin-top: 30px;margin-left: 30px;">
+                        <input class="form-check-input" type="radio" name="payment-method" id="Wallet" value="option1"
+                            >
+                        <label class="form-check-label d-flex" for="COD">
+                            <div class="" style="height: 40px;width:60px">
+                                <img class="img-flui" style="width: 36px;" src="/Images/wallet-filled-money-tool.png">
+                            </div>
+                            <p class="my-2 mx-0"
+                                style="font-weight: 700;font-size: 17px;font-family: 'Poppins', sans-serif;">Wallet</p>
+                        </label>
+                        <p class="text-secondary" style="font-family: 'Poppins', sans-serif;">Wallet Balance : <i class="bi bi-currency-rupee"></i>{{walletAmount}}</p>
+                        <p style="line-height: 14px;font-size: 11px;font-family: 'Poppins', sans-serif;"
+                            class="text-secondary mb-4">Experience seamless payments by using your wallet balance. Swift, efficient, and hassle-free transactions await you.</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-3">
+            <div>
+                <p class="mx-2" style="font-size: 12px;line-height: 1.5;font-family: 'Poppins', sans-serif;">Our meticulously designed payment methods are underpinned
+                    by the highest standards of safety and security. You can place your trust in us with full
+                    confidence, knowing that your financial information is in safe hands.</p><br>
+                <a id="placeOrder" class="btn cart-btn" style="">Place Order</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and
+                        innovation for a sophisticated living experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li> GK Building , Bangalore 432</li>
+                        <li>support@evolve.com</li>
+                        <li>+91 667 8822 0909</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Explore</h2>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                    Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
+
+<!-- jquery -->
+<script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/stylesheet/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/stylesheet/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/stylesheet/assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+<script src="/javaScript/addresssValidation.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    //save address
+    const addressSubmit = document.querySelector('.addressSubmit');
+    addressSubmit.addEventListener('click', () => {
+        const name = document.getElementById('name').value
+        const mobile = document.getElementById('mobile').value
+        const city = document.getElementById('city').value
+        const pincode = document.getElementById('pincode').value
+        const district = document.getElementById('district').value
+        const state = document.getElementById('state').value
+        const address = document.getElementById('address').value
+        const isvalid = validate()
+        if (isvalid) {
+            const data = {
+                name: name,
+                mobile: mobile,
+                city: city,
+                pincode: pincode,
+                district: district,
+                state: state,
+                address: address
+            }
+
+            if (data) {
+                $.ajax({
+                    type: "POST",
+                    url: "/profile/add_address", // Your server route for adding items to the cart
+                    data: data,
+                    success: function (data) {
+                        // location.reload();
+                        if (data.status == 'success') {
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Address Added',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        }
+                        setTimeout(() => {
+                            location.reload()
+                        }, 2000)
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+        }
+    })
+
+    //place Order
+    document.getElementById("placeOrder").addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const radioButtons = document.getElementsByName('address-option');
+        let selectedRadioButtonId = null;
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+                selectedRadioButtonId = radioButton.id;
+                break;
+            }
+        }
+        const walletAmount = Number('{{walletAmount}}')
+        //let total = Number('{{grandTotal}}')
+        let total = document.getElementById('totVal').value
+        total = Number(total);
+        console.log('total' + total)
+        //total=undefined
+        //const actualAmount = parseFloat(document.getElementById('cartTotal').innerHTML.replace(/[^\d.]/g, ''))
+        const paymentMethod = document.querySelector('input[name="payment-method"]:checked').id
+        let discount = document.getElementById('disVal').value
+        discount = Number(discount);
+        //const discount = Number('{{discountVal}}')
+
+        if (!selectedRadioButtonId) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Address Needed',
+            })
+        } else if (total === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'No Items'
+            })
+        }else if (paymentMethod === 'Wallet' && walletAmount<total) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Insufficient Balance in wallet'
+            })
+        } else {
+            const data = {
+                totalPrice: total,
+                discount: discount,
+                paymentMethod: paymentMethod,
+                addressId: selectedRadioButtonId,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/place_order", // Your server route for adding items to the cart
+                data: data,
+                success: function (data) {
+                    if (data.status == 'COD') {
+                        const successModalButton = document.getElementById('successModalButton');
+                        successModalButton.click();
+                        setTimeout(() => {
+                            location.href = `/confirmation/?orderId=${data.placeOrderId}`
+                        }, 2000);
+                    }else if(data.status=='Wallet'){
+                        const successModalButton = document.getElementById('successModalButton');
+                        successModalButton.click();
+                        setTimeout(() => {
+                            location.href = `/confirmation/?orderId=${data.placeOrderId}`
+                        }, 2000);
+                    } else if (data.status == 'Razorpay') {
+                        razorpayPayment(data.response);
+                    }
+
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+    })
+
+    function razorpayPayment(order) {
+
+        var options = {
+            "key": "rzp_test_BPKbJBGHLFo8lc", // Enter the Key ID generated from the Dashboard
+            "amount": order.total, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Evolve", //your business name
+            "description": "Test Transaction",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+
+                verifyPayment(response, order);
+                console.log('response' + response);
+
+
+            },
+            "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+                "name": "Gaurav Kumar", //your customer's name
+                "email": "gaurav.kumar@example.com",
+                "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            },
+            "redirect": false
+
+
+        };
+        console.log(options);
+        var razorpay = new Razorpay(options);
+        razorpay.open();
+    }
+
+    async function verifyPayment(payment, order) {
+        const response = await fetch('/verify-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ payment, order }),
+        })
+        const result = await response.json()
+        if (result.status == 'payment success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Payment Successfull',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setTimeout(() => {
+                location.href = `/confirmation/?orderId=${result.placeOrderId}`
+            }, 1500);
+        } else if (result.status == 'payment failed') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Payment Failed',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setTimeout(() => {
+                location.href = `/confirmation/?orderId=${result.placeOrderId}`
+            }, 1500);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Some thing went wrong',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    }
+
+    // Function to copy text to the clipboard
+    document.querySelectorAll('.copyBtn').forEach(button => {
+        button.addEventListener('click', async () => {
+            const textToCopy = $(button).data('coupon-code');
+
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                button.textContent = 'Copied'
+                setTimeout(() => {
+                    button.textContent = 'Copy'
+                }, 6000)
+            } catch (err) {
+                console.error('Unable to copy text: ', err);
+            }
+        });
+    });
+    function validateCoupon() {
+        const couponError = document.getElementById('couponError');
+        const couponCode = document.getElementById('couponCode');
+        if (couponCode.value.trim() == '') {
+            couponError.innerHTML = 'Please Enter Your Coupon Code';
+            setTimeout(() => {
+                couponError.innerHTML = '';
+            }, 4000);
+            return false
+        }
+        return true
+    }
+    //apply coupon
+    const applyBtn = document.getElementById('applyBtn');
+    applyBtn.addEventListener('click', () => {
+
+        const isvalid = validateCoupon()
+        if (isvalid) {
+            const couponCode = document.getElementById('couponCode').value;
+            const totalPrice = '{{grandTotal}}'
+            //let totalPrice = document.getElementById('cartTotal').value
+            //totalPrice=Number(totalPrice)
+
+            $.ajax({
+                method: 'GET',
+                url: `/apply_coupon?couponcode=${couponCode}&totalprice=${totalPrice}`,
+                success: (data) => {
+                    if (data.status == 'success') {
+                        const discountValue = data.discountValue
+                        const actualValue = data.actualValue
+                        const discount = document.getElementById('discount');
+                        const cartTotal = document.getElementById('cartTotal');
+                        //hidden inputs
+                        const discountIn = document.getElementById('disVal');
+                        const cartTotalIn = document.getElementById('totVal');
+                        discountIn.value = discountValue
+                        cartTotalIn.value = actualValue
+
+                        discount.innerHTML = discountValue
+                        cartTotal.innerHTML = actualValue;
+                        Toastify({
+                            text: data.message,
+                            duration: 5000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "green", // Customize the toast background color
+                        }).showToast();
+                    } else if (data.status == 'warning') {
+                        const couponError = document.getElementById('couponError');
+                        couponError.innerHTML = 'Invalid Coupon Code';
+                        Toastify({
+                            text: 'Invlalid,Please check your coupon code.',
+                            duration: 4000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "red", // Customize the toast background color
+                        }).showToast();
+
+                        setTimeout(() => {
+                            couponError.innerHTML = '';
+                        }, 4000);
+                        return false
+                    } else if (data.status == 'added') {
+                        Toastify({
+                            text: data.message,
+                            duration: 4000, // Display the toast for 5 seconds
+                            gravity: "top", // Position the toast at the top
+                            position: "right", // Position the toast on the right side
+                            backgroundColor: "red", // Customize the toast background color
+                        }).showToast();
+                    }
+                },
+                error: () => {
+                    Toastify({
+                        text: 'An error occured',
+                        duration: 5000, // Display the toast for 5 seconds
+                        gravity: "top", // Position the toast at the top
+                        position: "right", // Position the toast on the right side
+                        backgroundColor: "red", // Customize the toast background color
+                    }).showToast();
+                }
+            })
+        }
+
+    })
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

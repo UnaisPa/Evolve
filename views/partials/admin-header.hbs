@@ -1,0 +1,53 @@
+<link rel="stylesheet" type="text/css" href="/stylesheet/adminheader.css">
+<nav id="navs" style="width: 100%;" class="navbar navbar-expand-lg ">
+    <div class="container">
+        <div style="width:40%; margin-left:20px" class=""><a id="evolve" style="font-weight:bold ;" class="navbar-brand"
+                href="#">Evolve.</a></div>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Add Banner<a />
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Coupon</a>
+                </li>
+                <li class="nav-item">
+                    {{#if addProduct}}<a id="add-product" class="nav-link" href="/admin/products/add_product">Add
+                        Product</a>
+                    {{else}}<a class="nav-link" href="/admin/products/add_product">Add Product</a>{{/if}}
+                </li>
+                <li id="admin" class="nav-item">
+                    <a class="nav-link" href="#">Admin</a>
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="btn-group dropstart">
+            <button style="border-style: none;" class="" type="" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                 <div class="admin-icon">
+            <i style="font-size:25px" class='bx bxs-user-circle'></i>
+            
+                </div>
+        </button>
+            
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/admin/logout">Logout</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+       
+        <div class="nav-item">
+            <h6 style="display: none;" class="text-center">Admin</h6>
+        </div>
+        <span id="menuBar" class="navbar-toggler" type="menu" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class='bx bx-menu'></i>
+        </span>
+    </div>
+</nav>

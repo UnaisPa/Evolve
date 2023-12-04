@@ -1,0 +1,388 @@
+<link rel="stylesheet" href="/stylesheet/shop.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- fontawesome -->
+<link rel="stylesheet" href="/stylesheet/assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="/stylesheet/assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="/stylesheet/assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="/stylesheet/assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="/stylesheet/assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="/stylesheet/assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="/stylesheet/assets/css/responsive.css">
+{{!-- sweet alert --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<style>
+    .custom-container-class .swal2-input {
+        width: 80%;
+        /* Adjust the width as needed */
+    }
+</style>
+
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/home">
+                            <h3 style="color: #F28123;margin-top: 9px;">Evolve.</h3>
+                            {{!-- <img src="stylesheet/assets/img/logo.png" alt=""> --}}
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/shop">Shop</a></li>
+                            {{#if verified}}<li class="current-list-item"><a href="/profile">Profile</a></li>
+                            {{else}}<li><a href="/login">Login</a></li>{{/if}}
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                                    <a>
+                                        <form action="/shop" method="get" style="margin-right:2%;">
+                                            <div style="" class="input-group">
+                                                <input id="searchBar" name="search" style="width: 130px;height: 40px;"
+                                                    class="form-control" aria-describedby="button-addon2"
+                                                    placeholder="Search" {{#if search}} value="{{search}}" {{/if}}>
+                                                <button
+                                                    style="border-color: rgb(223, 216, 216); border-left: white; background-color: white;"
+                                                    class="btn " type="submit" id="button-addon2"><i id="searchbtn"
+                                                        style="font-size: 20px;" class='bx bx-search'></i></button>
+                                            </div>
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <form action="shop">
+                            <input name="search" type="search" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+
+{{!-- <section class="banner-section border-top border-bottom">
+    <div class="text-center">
+        <h2 style="padding-top:100px;">Shop</h2>
+    </div>
+</section> --}}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+
+                    <h1 style="font-weight: 700;">Wallet</h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<section class="container" style="margin-top: 10%;margin-bottom: 10%;">
+    <div class="d-flex justify-content-center">
+        <div class="card mb-3 shadow" style="width: 27rem;">
+            <div class="card-body">
+                <h6 class="card-title">Wallet Amount</h6>
+                <h3><i class="bi bi-currency-rupee"></i> {{#each wallet}}{{this.walletAmount}}{{/each}}</h3>
+                <p style="font-size: 12px;line-height: 13px;" class="text-secondary">Unlock the convenience of
+                    hassle-free transactions by recharging your wallet.</p>
+                <button id="recharge" class="btn btn-primary">Recharge Wallet</button>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 100px;">
+        <h5 class="mb-4 mt-4">Transaction History</h5>
+        <table class="table table-secondary table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if transactionHistory}}
+                
+                
+                {{#each transactionHistory}}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{this.type}}</td>
+                    <td>{{#eq this.type "Recharged"}}<span class="bg-success text-white p-1" style="border-radius: 8px;"><i class="bi bi-currency-rupee"></i>{{this.amount}}</span>{{else}}<span class="bg-danger text-white p-1" style="border-radius: 8px;"><i class="bi bi-currency-rupee"></i>{{this.amount}}</span>{{/eq}} </td>
+                    <td>{{formatDate this.date}}</td>
+                </tr>
+                {{/each}}
+                {{else}}
+                <p class="text-center">no transactions were done.</p>
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Evolve: Elevate your space with curated home decor and furniture. Explore a blend of style and
+                        innovation for a sophisticated living experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li> GK Building , Bangalore 432</li>
+                        <li>support@evolve.com</li>
+                        <li>+91 667 8822 0909</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Explore</h2>
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2023 - <a href="/home">Evolve</a>, All Rights
+                    Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
+
+<!-- jquery -->
+<script src="/stylesheet/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/stylesheet/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="/stylesheet/assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="/stylesheet/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/stylesheet/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/stylesheet/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/stylesheet/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/stylesheet/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/stylesheet/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/stylesheet/assets/js/main.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    document.getElementById('recharge').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const { value: amount } = await Swal.fire({
+            title: 'Enter Amount',
+            input: 'number',
+            inputPlaceholder: 'Enter the amount',
+            inputAttributes: {
+                min: '0', // Set a minimum value of 0
+                step: '1', // Set the step size for the number input
+            },
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value || value < 0) {
+                    return 'Enter a valid amount';
+                }
+            },
+            customClass: {
+                container: 'custom-container-class', // Apply a custom class to the container
+            },
+        });
+
+        if (amount) {
+            $.ajax({
+                method: 'POST',
+                url: '/recharge_wallet',
+                data:  {amount:amount} ,
+                success: (data) => {
+                    if (data.status == 'success') {
+                        razorpayPayment(data.response)
+                    }
+                },
+                error: (err) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'An error Occured '+err,
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+            })
+        }
+    })
+
+     function razorpayPayment(order) {
+
+        var options = {
+            "key": "rzp_test_BPKbJBGHLFo8lc", // Enter the Key ID generated from the Dashboard
+            "amount": order.total, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Evolve", //your business name
+            "description": "Test Transaction",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+
+                verifyPayment(response, order);
+                console.log('response' + response);
+
+
+            },
+            "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+                "name": "Gaurav Kumar", //your customer's name
+                "email": "gaurav.kumar@example.com",
+                "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            },
+            "redirect": false
+
+
+        };
+        console.log(options);
+        var razorpay = new Razorpay(options);
+        razorpay.open();
+    }
+
+    async function verifyPayment(payment, order) {
+        const response = await fetch('/verify-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ payment, order, from:'wallet' }),
+        })
+        const result = await response.json()
+        if (result.status == 'rechargeSuccess') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Recharge Successfull',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setTimeout(() => {
+                location.reload()
+            }, 1500);
+        } else if (result.status == 'recharge failed') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Recharge Failed',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setTimeout(() => {
+                location.reload()
+            }, 1500);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Some thing went wrong',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    }
+</script>
