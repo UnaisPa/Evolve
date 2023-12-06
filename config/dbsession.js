@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const mongodbSession = require('connect-mongodb-session')(session)
-const uri = process.env.MONGODB_URL;
+const uri = 'mongodb+srv://unaismuhmed712:parammel321@evolvecluster.wxunp9m.mongodb.net/e-commerce';
 
 const adminStore = new mongodbSession({
     uri:uri,
