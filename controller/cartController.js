@@ -227,7 +227,11 @@ const loadCheckout = async (req, res) => {
       })
 
       //wallet balance
-      const wallet = await Wallet.findOne({userId:userId});
+      let wallet = await Wallet.findOne({userId:userId});
+      if (!wallet) {
+         wallet = new Wallet({ userId: userId,walletAmount:0, walletHistory: [] });
+         await address.save();
+      }
       const walletAmount = wallet.walletAmount
 
       const validCoupons = validateCoupon.map(item => ({
