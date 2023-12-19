@@ -238,7 +238,11 @@
     </div>
     <div class="text-center mt-3">
         {{#each orderDetails}}{{#eq this.returnOrderStatus 'requested'}}{{/eq}}{{#eq this.returnOrderStatus 'request approved'}}{{else}}
-    {{#eq this.orderStatus "Delivered" }}<button id="returnBtn"  type="button" class="btn btn-danger">Return</button>{{/eq}}{{/eq}}{{/each}}</div>
+    {{#eq this.orderStatus "Delivered" }}<button id="returnBtn"  type="button" class="btn btn-danger">Return</button>{{/eq}}{{/eq}}{{/each}}
+
+    <a href="/invoice/{{#each orderDetails}}{{this._id}}{{/each}}" class="btn btn-info"
+            style="color: white;">DOWNLOAD INVOICE</a>
+    </div>
 </section>
     <!-- footer -->
     <div class="footer-area">
